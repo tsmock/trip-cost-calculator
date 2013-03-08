@@ -32,6 +32,8 @@ public abstract class Route
     private float distance;
     /** Any additional costs for using the route */
     private float costs;
+    /** Average gas cost */
+    private float gasCost;
 
     /**
      * @param name The name of the route
@@ -88,5 +90,25 @@ public abstract class Route
     public float getCosts()
     {
         return this.costs;
+    }
+
+    /**
+     * We get the average cost of gas on this route
+     * @return The average cost of gas for this route
+     */
+    public float getGasCost() //TODO test
+    {
+        return this.gasCost;
+    }
+
+
+
+    /**
+     * We set the average cost of gas on this route
+     * @param gasCost the average cost of gas on this route
+     */
+    public void setGasCost(float gasCost) //TODO test
+    {
+        this.gasCost = gasCost;
     }
 }

@@ -30,6 +30,22 @@ public class CostCalculation
 {
     /** The directions on how to get somewhere */
     ArrayList<Route> mapDirections;
+    /** The vehicle to use */
+    Vehicle vehicle;
+
+
+
+    /**
+     * We make a new costcalculation with a vehicle
+     */
+    public CostCalculation(Vehicle vehicle)
+    {
+        this.vehicle = vehicle;
+        this.mapDirections = new ArrayList<Route>();
+    }
+
+
+
     /**
      * @param string The specific string for the route
      * @return The route that goes with the specified string
@@ -51,8 +67,58 @@ public class CostCalculation
      */
     public void addRoutes(Route newRoute)
     {
-        // TODO Auto-generated method stub
+        if (newRoute != null)
+        {
+            //TODO check to see if size returns size or size - 1
+            this.addRoutes(newRoute, mapDirections.size() - 1);
+        }
+    }
 
+
+    /**
+     * @param newRoute The route to add
+     * @param index The index to add it at
+     */
+    public void addRoutes(Route newRoute, int index)
+    {
+        if (newRoute != null)
+        {
+            this.mapDirections.add(index, newRoute);
+        }
+    }
+
+
+    /**
+     * @return the vehicle that is used for this trip
+     */
+    public Vehicle getVehicle() //TODO test
+    {
+        return this.vehicle;
+    }
+
+
+    /**
+     * @param vehicle The vehicle to use
+     */
+    public void setVehicle(Vehicle vehicle) //TODO test
+    {
+        this.vehicle = vehicle;
+    }
+
+
+    /**
+     * We calculate the costs
+     */
+    public float tripCost()
+    {
+        float mpg = this.vehicle.getMpg();
+        float totalCost = 0;
+        for (Route route : mapDirections)
+        {
+            totalCost += route.getDistance() / mpg * route.getGasCost()
+                + route.getCosts();
+        }
+        return totalCost;
     }
 
 }

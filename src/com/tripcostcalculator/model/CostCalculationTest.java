@@ -41,7 +41,7 @@ public class CostCalculationTest
     public void setUp()
         throws Exception
     {
-        test = new CostCalculation();
+        test = new CostCalculation(new Vehicle("S300", 30));
     }
 
 
@@ -51,7 +51,6 @@ public class CostCalculationTest
     @Test
     public void testAddRoutesGetRoutes()
     {
-        fail("Not yet implemented"); // TODO
         test.addRoutes(new Toll("New York City Bridge", 10, 40));
         assertEquals("New York City Bridge",
             test.getRoutes("New York City Bridge").getName());
@@ -65,6 +64,33 @@ public class CostCalculationTest
     public void testGetNullRoutes()
     {
         assertNull(test.getRoutes("The non-existent plane"));
+    }
+
+
+
+    /**
+     * We test adding routes
+     */
+    @Test
+    public void testAddRoutes()
+    {
+        assertNull(test.getRoutes("testing"));
+        test.addRoutes(new Toll("testing", 10, 40));
+        assertEquals("testing", test.getRoutes("testing").getName());
+    }
+
+
+    /**
+     * We test calculations of cost
+     */
+    @Test
+    public void testTripCost()
+    {
+        assertEquals(0, test.tripCost(), 0.1);
+        Toll toll = new Toll("testing", 10, 40);
+        test.addRoutes(toll);
+        toll.setGasCost((float)3.00);
+        assertEquals(41, test.tripCost(), 0.1);
     }
 
 }
