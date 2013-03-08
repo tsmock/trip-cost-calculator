@@ -6,36 +6,25 @@ import org.junit.Test;
 
 // -------------------------------------------------------------------------
 /**
- *  Write a one-sentence summary of your class here.
- *  Follow it with additional details about its purpose, what abstraction
- *  it represents, and how to use it.
- * 
- *  @author vorpalblade
+ *  We test the map class here
+ *
+ *  @author Taylor Smock (tsmock)
  *  @version Mar 7, 2013
  */
 
 public class MapTest
 {
-
+    private Map map;
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
+     * Initializes the necessary variables.
      * @throws java.lang.Exception
      */
     @Before
     public void setUp()
         throws Exception
     {
-    }
-
-
-    /**
-     * Test method for {@link com.tripcostcalculator.model.Map#Map(java.lang.String, java.lang.String)}.
-     */
-    @Test
-    public void testMap()
-    {
-        fail("Not yet implemented"); // TODO
+        map = new Map("VT", "Nowhere");
     }
 
 
@@ -45,7 +34,9 @@ public class MapTest
     @Test
     public void testSetStart()
     {
-        fail("Not yet implemented"); // TODO
+        assertEquals("VT", map.getStart());
+        map.setStart("D.C.");
+        assertEquals("D.C.", map.getStart());
     }
 
 
@@ -55,7 +46,7 @@ public class MapTest
     @Test
     public void testGetStart()
     {
-        fail("Not yet implemented"); // TODO
+        assertEquals("VT", map.getStart());
     }
 
 
@@ -65,7 +56,9 @@ public class MapTest
     @Test
     public void testSetEnd()
     {
-        fail("Not yet implemented"); // TODO
+        assertEquals("Nowhere", map.getEnd());
+        map.setEnd("Vermont");
+        assertEquals("Vermont", map.getEnd());
     }
 
 
@@ -75,7 +68,7 @@ public class MapTest
     @Test
     public void testGetEnd()
     {
-        fail("Not yet implemented"); // TODO
+        assertEquals("Nowhere", map.getEnd());
     }
 
 }
