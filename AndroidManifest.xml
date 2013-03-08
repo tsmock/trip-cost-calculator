@@ -2,17 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tripcostcalculator"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0" android:installLocation="auto">
 
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
+    <instrumentation android:name="android.test.InstrumentationTestRunner" android:targetPackage="com.tripcostcalculator"></instrumentation>
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme" android:allowClearUserData="true">
         <activity
             android:name="com.tripcostcalculator.MainActivity"
             android:label="@string/app_name" >
@@ -22,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <uses-library android:name="android.test.runner"/>
     </application>
 
 </manifest>
