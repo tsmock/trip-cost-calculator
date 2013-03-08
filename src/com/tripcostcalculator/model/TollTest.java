@@ -49,9 +49,9 @@ public class TollTest
      * We test the getToll method
      */
     @Test
-    public void testGetToll()
+    public void testGetCosts()
     {
-        assertEquals(tollAmount, toll.getToll(), 0.1);
+        assertEquals(tollAmount, toll.getCosts(), 0.1);
     }
 
 
@@ -59,11 +59,11 @@ public class TollTest
      * We test the setToll method
      */
     @Test
-    public void testSetToll()
+    public void testSetCosts()
     {
-        assertEquals(tollAmount, toll.getToll(), 0.1);
-        toll.setToll(10);
-        assertEquals(10, toll.getToll(), 0.1);
+        assertEquals(tollAmount, toll.getCosts(), 0.1);
+        toll.setCosts(10);
+        assertEquals(10, toll.getCosts(), 0.1);
     }
 
 

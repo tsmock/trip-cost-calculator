@@ -22,22 +22,4 @@ public class Toll extends Route
         super(name, distance);
         this.toll = toll;
     }
-
-
-    /**
-     * @return the toll for this road
-     */
-    public float getToll()
-    {
-        return this.toll;
-    }
-
-
-    /**
-     * @param toll The new toll
-     */
-    public void setToll(float toll)
-    {
-        this.toll = toll;
-    }
 }

@@ -14,6 +14,8 @@ public abstract class Route
     private String name;
     /** The length of the route */
     private float distance;
+    /** Any additional costs for using the route */
+    private float costs;
 
     /**
      * @param name The name of the route
@@ -23,6 +25,7 @@ public abstract class Route
     {
         this.name = name;
         this.distance = distance;
+        this.costs = 0; //This should be the default.
     }
 
 
@@ -39,7 +42,7 @@ public abstract class Route
     /**
      * @return the length of this route
      */
-    public float getDistance() //TODO test
+    public float getDistance()
     {
         return this.distance;
     }
@@ -48,9 +51,26 @@ public abstract class Route
     /**
      * @param distance The new distance
      */
-    public void setDistance(float distance) //TODO test
+    public void setDistance(float distance)
     {
         this.distance = distance;
     }
-    //TODO test all the classes
+
+
+    /**
+     * @param costs Any additional costs of using the route
+     */
+    public void setCosts(float costs)
+    {
+        this.costs = costs;
+    }
+
+
+    /**
+     * @return The additional costs for using this route
+     */
+    public float getCosts()
+    {
+        return this.costs;
+    }
 }
