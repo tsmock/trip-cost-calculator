@@ -12,7 +12,8 @@ import org.junit.runners.Suite.SuiteClasses;
  *  @version Mar 7, 2013
  */
 @RunWith(Suite.class)
-@SuiteClasses({ MapTest.class, VehicleTest.class })
+@SuiteClasses({ MapTest.class, VehicleTest.class, TollTest.class,
+    CostCalculationTest.class })
 public class AllTests
 {
     //This should do nothing.

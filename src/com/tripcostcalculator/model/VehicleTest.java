@@ -14,36 +14,29 @@ import org.junit.Test;
 
 public class VehicleTest
 {
-
+    /** The vehicle that we will be testing */
+    Vehicle test;
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
+     * Initializes variables
      * @throws java.lang.Exception
      */
     @Before
     public void setUp()
         throws Exception
     {
+        test = new Vehicle("S300", 40);
     }
 
 
     /**
-     * Test method for {@link com.tripcostcalculator.model.Vehicle#Vehicle(java.lang.String, float)}.
-     */
-    @Test
-    public void testVehicle()
-    {
-        fail("Not yet implemented"); // TODO
-    }
-
-
-    /**
-     * Test method for {@link com.tripcostcalculator.model.Vehicle#getVehicleName()}.
+     * Test method for {@link com.tripcostcalculator.model
+     * .Vehicle#getVehicleName()}.
      */
     @Test
     public void testGetVehicleName()
     {
-        fail("Not yet implemented"); // TODO
+        assertEquals("S300", test.getVehicleName());
     }
 
 
@@ -53,7 +46,7 @@ public class VehicleTest
     @Test
     public void testGetMpg()
     {
-        fail("Not yet implemented"); // TODO
+        assertEquals(40, test.getMpg(), .1);
     }
 
 
@@ -63,7 +56,9 @@ public class VehicleTest
     @Test
     public void testSetMpg()
     {
-        fail("Not yet implemented"); // TODO
+        assertEquals(40, test.getMpg(), .1);
+        test.setMpg(10);
+        assertEquals(10, test.getMpg(), .1);
     }
 
 }
