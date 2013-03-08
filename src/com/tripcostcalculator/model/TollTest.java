@@ -6,33 +6,87 @@ import org.junit.Test;
 
 // -------------------------------------------------------------------------
 /**
- *  Write a one-sentence summary of your class here.
- *  Follow it with additional details about its purpose, what abstraction
- *  it represents, and how to use it.
- * 
- *  @author vorpalblade
+ *  We test the toll class.
+ *
+ *  @author Taylor Smock (tsmock)
  *  @version Mar 7, 2013
  */
 
 public class TollTest
 {
+    private Toll toll;
+    private float tollAmount;
+    private String tollName;
+    private float tollDistance;
 
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
+     * Set up toll.
      * @throws java.lang.Exception
      */
     @Before
     public void setUp()
         throws Exception
     {
+        tollAmount = 50;
+        tollName = "VM";
+        tollDistance = 30;
+        toll = new Toll(tollName, tollDistance, tollAmount);
     }
 
 
+    /**
+     * We test the get name method
+     */
     @Test
-    public void test()
+    public void testGetName()
     {
-        fail("Not yet implemented"); // TODO
+        assertEquals(tollName, toll.getName());
+    }
+
+
+    /**
+     * We test the getToll method
+     */
+    @Test
+    public void testGetToll()
+    {
+        assertEquals(tollAmount, toll.getToll(), 0.1);
+    }
+
+
+    /**
+     * We test the setToll method
+     */
+    @Test
+    public void testSetToll()
+    {
+        assertEquals(tollAmount, toll.getToll(), 0.1);
+        toll.setToll(10);
+        assertEquals(10, toll.getToll(), 0.1);
+    }
+
+
+
+    /**
+     * We test the distance get methods
+     */
+    @Test
+    public void testGetDistance()
+    {
+        assertEquals(this.tollDistance, toll.getDistance(), 0.1);
+    }
+
+
+    /**
+     * We test setting the distance
+     */
+    @Test
+    public void testSetDistance()
+    {
+        assertEquals(this.tollDistance, toll.getDistance(), 0.1);
+        toll.setDistance(1);
+        assertEquals(1, toll.getDistance(), 0.1);
     }
 
 }
