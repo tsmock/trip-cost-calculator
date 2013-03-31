@@ -1,5 +1,7 @@
 package com.tripcostcalculator.model;
 
+import com.tripcostcalculator.information.*;
+
 // -------------------------------------------------------------------------
 /**
  *  We do stuff with vehicles
@@ -30,6 +32,11 @@ public class Vehicle
     String vehicle;
     /** The vehicle miles per gallon */
     float mpg;
+    /** The url for vehicle information */
+    String vehicleURL;
+
+
+
 
     /**
      * @param vehicle The vehicle string to return
@@ -39,6 +46,19 @@ public class Vehicle
     {
         this.vehicle = vehicle;
         this.mpg = mpg;
+    }
+
+
+
+    /**
+     * @param vehicle The vehicle string to return
+     * @param mpg the miles per gallon that the vehicle gets
+     * @param vehicleURL the url that vehicle information is at
+     */
+    public Vehicle(String vehicle, float mpg, String vehicleURL)
+    {
+        this(vehicle, mpg);
+        this.vehicleURL = vehicleURL;
     }
 
 
@@ -67,5 +87,37 @@ public class Vehicle
     public void setMpg(float mpg)
     {
         this.mpg = mpg;
+    }
+
+
+
+    /**
+     * @param vehicleURL The new url to get vehicle information
+     */
+    public void setURL(String vehicleURL)
+    {
+        this.vehicleURL = vehicleURL;
+    }
+
+
+    /**
+     * @return The url that we are getting vehicle information from
+     */
+    public String getURL()
+    {
+        return this.vehicleURL;
+    }
+
+    /**
+     * We get the file for mpg and stuff...
+     */
+    public void getFile()
+    {
+        if (this.vehicleURL != null)
+        {
+            WebsiteInformation info = new WebsiteInformation(this.vehicleURL,
+            this.vehicle + ".txt");
+            info.saveFile();
+        }
     }
 }
