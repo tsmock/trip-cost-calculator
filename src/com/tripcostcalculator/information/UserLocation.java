@@ -44,7 +44,16 @@ public class UserLocation
     {
         this.locationManager = locationManager;
         this.updateLoc();
-
+        if (this.locationManager.
+            isProviderEnabled(LocationManager.NETWORK_PROVIDER))
+        {
+            this.setLocationProvider(LocationManager.NETWORK_PROVIDER);
+        }
+        else if (this.locationManager.
+            isProviderEnabled(LocationManager.GPS_PROVIDER))
+        {
+            this.setLocationProvider(LocationManager.GPS_PROVIDER);
+        }
     }
 
     // ----------------------------------------------------------
@@ -62,8 +71,10 @@ public class UserLocation
      */
     public void setLocationProvider(String locationProvider)
     {
-        if (locationProvider == LocationManager.NETWORK_PROVIDER ||
-            locationProvider == LocationManager.GPS_PROVIDER)
+        //Prevent locationProvider from being set to an invalid provider
+        if ((locationProvider == LocationManager.NETWORK_PROVIDER ||
+            locationProvider == LocationManager.GPS_PROVIDER) &&
+            this.locationManager.isProviderEnabled(locationProvider))
         {
             this.locationProvider = locationProvider;
         }

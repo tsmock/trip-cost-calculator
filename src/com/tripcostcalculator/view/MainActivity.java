@@ -18,7 +18,7 @@ import android.view.Menu;
 public class MainActivity extends Screen
 {
     /** The location of the user. May want to update from time to time */
-    UserLocation loc;
+    public UserLocation loc;
 
 
 
