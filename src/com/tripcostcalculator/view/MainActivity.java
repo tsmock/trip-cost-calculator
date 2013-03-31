@@ -1,11 +1,13 @@
 package com.tripcostcalculator.view;
 
+import android.content.Context;
 import com.tripcostcalculator.R;
 import com.tripcostcalculator.R.layout;
 import com.tripcostcalculator.R.menu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import com.tripcostcalculator.information.*;
 
 // -------------------------------------------------------------------------
 /**
