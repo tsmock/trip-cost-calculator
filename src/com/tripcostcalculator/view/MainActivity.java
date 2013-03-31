@@ -17,6 +17,18 @@ import android.view.Menu;
  */
 public class MainActivity extends Screen
 {
+    //TODO add links (TOS stuff) for:
+    // http://www.google.com/privacy.html
+    // http://www.google.com/intl/en_us/help/terms_maps.html
+    // http://www.google.com/intl/en_us/policies/privacy/
+    //TODO TOS stuff
+    // Add our own TOS and Privacy Policy
+    // Add powered by Google next to map. The defaults might work (depends)
+    // We must show the corresponding google map
+    // We must implement a way for users to prevent us from getting geolocation
+    // data.
+    // We should only send location information and NOTHING else to google
+    // We can't use this for turn-by-turn navigation. (10.2(c)(i))
     /** The location of the user. May want to update from time to time */
     public UserLocation loc;
 
