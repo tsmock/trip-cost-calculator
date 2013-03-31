@@ -36,6 +36,22 @@ public class Toll extends Route
     public Toll(String name, float distance, float toll)
     {
         super(name, distance);
+        this.setToll(toll);
+    }
+    // ----------------------------------------------------------
+    /**
+     * @return the toll
+     */
+    public float getToll()
+    {
+        return toll;
+    }
+    // ----------------------------------------------------------
+    /**
+     * @param toll the toll to set
+     */
+    public void setToll(float toll)
+    {
         this.toll = toll;
     }
 }
