@@ -73,10 +73,14 @@ public class WebsiteInformation
             website = new URL(this.websiteURL);
             try
             {
+                //We get the webpage and then save it to disk
                 ReadableByteChannel rbc;
+                // getting page
                 rbc = Channels.newChannel(website.openStream());
+                //saving page
                 FileOutputStream fos = new FileOutputStream(filename1);
                 fos.getChannel().transferFrom(rbc, 0, 1 << 24);
+                //freeing memory
                 fos.close();
                 rbc.close();
             }
@@ -103,7 +107,8 @@ public class WebsiteInformation
     public boolean removeFile()
     {
         File f = new File(this.filename);
-        if (!f.delete()) //TODO test
+        // if f does not exist then we do not need to delete.
+        if (f.exists() && !f.delete()) //TODO test (find way to make file unwritable?)
         {
             System.out.println("File not deleted");
             return false;

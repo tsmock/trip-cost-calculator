@@ -1,8 +1,4 @@
 /**
- *
- */
-// -------------------------------------------------------------------------
-/**
  * This packages gets information from the web.
  *
  * @author Taylor Smock (tsmock)
