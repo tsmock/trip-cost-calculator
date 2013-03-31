@@ -37,6 +37,7 @@ public class CostCalculation
 
     /**
      * We make a new costcalculation with a vehicle
+     * @param vehicle The vehicle to base costs off of.
      */
     public CostCalculation(Vehicle vehicle)
     {
@@ -108,6 +109,7 @@ public class CostCalculation
 
     /**
      * We calculate the costs
+     * @return The total cost of the trip
      */
     public float tripCost()
     {
