@@ -13,6 +13,7 @@ import android.view.Menu;
  *
  * @author Taylor Smock (tsmock)
  * @author Gareth Griffith (gareth00)
+ * @author Tyler Leskanic (tyler47)
  * @version Mar 7, 2013
  */
 public class MainActivity extends Screen
