@@ -41,7 +41,7 @@
         android:text="Year" />
 
     <TextView
-        android:id="@+id/your_trip"
+        android:id="@+id/yourVehicle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/autoModel"
-        android:layout_below="@+id/your_trip"
+        android:layout_below="@+id/yourVehicle"
         android:layout_marginTop="36dp"
         android:ems="10"
         android:text="Make" />

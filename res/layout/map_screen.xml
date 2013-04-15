@@ -7,11 +7,11 @@
     tools:context=".MainActivity" >
 
     <TextView
-        android:id="@+id/public_transit"
+        android:id="@+id/publicTransit"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/your_trip"
-        android:layout_alignBottom="@+id/your_trip"
+        android:layout_alignBaseline="@+id/yourVehicle"
+        android:layout_alignBottom="@+id/yourVehicle"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="55dp"
         android:layout_marginRight="5dp"
@@ -21,7 +21,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/your_trip"
+        android:id="@+id/yourVehicle"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -34,7 +34,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
     
     <TextView
-        android:id="@+id/vehicle_cost"
+        android:id="@+id/vehicleCost"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
@@ -47,7 +47,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
     
     <TextView
-        android:id="@+id/public_cost"
+        android:id="@+id/publicCost"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"

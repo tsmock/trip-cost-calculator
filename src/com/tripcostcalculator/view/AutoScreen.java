@@ -1,5 +1,6 @@
 package com.tripcostcalculator.view;
 
+import android.widget.Button;
 import android.widget.EditText;
 import sofia.app.Screen;
 // -------------------------------------------------------------------------
@@ -12,12 +13,23 @@ import sofia.app.Screen;
  *  @version Apr 8, 2013
  */
 
-public class VehicleScreen extends Screen
+public class AutoScreen extends Screen
 {
+    private Button autoOk;
+    private EditText autoMPG;
+    private EditText autoYear;
+    private EditText autoMake;
+    private EditText autoModel;
 
     public void initialize()
     {
-
+        //maybe set the button to always be true if it makes everything easier
+        //to run
+        autoOk.setEnabled(false);
+        autoMPG.setText("");
+        autoYear.setText("");
+        autoMake.setText("");
+        autoModel.setText("");
     }
 
 

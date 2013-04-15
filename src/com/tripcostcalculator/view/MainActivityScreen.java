@@ -1,5 +1,7 @@
 package com.tripcostcalculator.view;
 
+import android.widget.Button;
+
 // -------------------------------------------------------------------------
 /**
  *  Write a one-sentence summary of your class here.
@@ -12,12 +14,14 @@ package com.tripcostcalculator.view;
 
 public class MainActivityScreen
 {
+    private Button calcTrip;
+    private Button defineCar;
 
 
     public void initialize()
     {
-
-
+        calcTrip.setEnabled(true);
+        defineCar.setEnabled(true);
     }
 
     public void defineCarClicked()
