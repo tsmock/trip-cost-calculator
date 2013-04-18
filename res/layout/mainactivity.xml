@@ -35,6 +35,7 @@
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
+        android:onClick = "defineCar1"
         android:text="Vehicle Setup" />
 
 </RelativeLayout>

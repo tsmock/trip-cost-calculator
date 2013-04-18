@@ -46,6 +46,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.tripcostcalculator.view.AutoScreen"></activity>
 
         <uses-library android:name="android.test.runner" />
 
