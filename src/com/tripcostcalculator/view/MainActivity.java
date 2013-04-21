@@ -1,5 +1,8 @@
 package com.tripcostcalculator.view;
 
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
 import android.location.LocationManager;
 import android.content.Context;
 import com.tripcostcalculator.information.UserLocation;
@@ -52,5 +55,34 @@ public class MainActivity extends Screen
     public void updateUserLocation()
     {
         loc.updateLoc();
+    }
+
+    private Button calcTrip;
+    private Button defineCar;
+
+
+    public void initialize()
+    {
+        calcTrip.setEnabled(true);
+        defineCar.setEnabled(true);
+    }
+
+    public void defineCarClicked()
+    {
+        //go to the car setup page
+        //presentScreen(AutoScreen.class, auto);
+        startActivity(new Intent(this, AutoScreen.class));
+
+    }
+
+    public void defineCar1(View view)
+    {
+        startActivity(new Intent(this, AutoScreen.class));
+
+    }
+
+    public void calcTripClicked()
+    {
+        //go to the calc trip page
     }
 }
