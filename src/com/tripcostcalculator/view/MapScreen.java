@@ -19,6 +19,10 @@ public class MapScreen
     private TextView vehicleCost;
     private TextView publicCost;
 
+    // ----------------------------------------------------------
+    /**
+     * We initialize the map screen.
+     */
     public void initialize()
     {
         publicTransit.setText("Public Transit");

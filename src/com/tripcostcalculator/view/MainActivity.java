@@ -7,8 +7,8 @@ import android.location.LocationManager;
 import android.content.Context;
 import com.tripcostcalculator.information.UserLocation;
 import sofia.app.Screen;
-import android.app.Activity;
-import android.view.Menu;
+//import android.app.Activity; //not currently used
+//import android.view.Menu;
 
 // -------------------------------------------------------------------------
 /**
