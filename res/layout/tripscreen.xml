@@ -14,10 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/autoMake"
         android:layout_marginTop="22dp"
-        android:text="Enter Your Trip Information Below"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="@string/tripscreenPrompt"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/White" />
 
     <EditText
         android:id="@+id/startLoc"
@@ -27,7 +27,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:ems="10"
-        android:text="Set Start" >
+        android:hint="@string/setStart"
+        android:text="@string/setStart"
+        android:textColor="@color/White" >
 
         <requestFocus />
     </EditText>
@@ -40,7 +42,9 @@
         android:layout_below="@+id/startLoc"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:text="Set End" />
+        android:hint="@string/setEnd"
+        android:text="@string/setEnd"
+        android:textColor="@color/White" />
 
     <Button
         android:id="@+id/tripOkButton"
@@ -49,7 +53,8 @@
         android:layout_alignRight="@+id/gasPrice"
         android:layout_below="@+id/gasPrice"
         android:layout_marginTop="30dp"
-        android:text="OK" />
+        android:text="@android:string/ok"
+        android:textColor="@color/White" />
 
     <EditText
         android:id="@+id/gasPrice"
@@ -60,6 +65,7 @@
         android:layout_marginTop="18dp"
         android:ems="10"
         android:inputType="number"
-        android:text="Current Gas Price" />
+        android:text="@string/currentGasPrice"
+        android:textColor="@color/White" />
 
 </RelativeLayout>

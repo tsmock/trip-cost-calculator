@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp"
-        android:text="Select an option below"
+        android:text="@string/mainActivityPrompt"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
@@ -26,7 +26,7 @@
         android:layout_alignLeft="@+id/defineCar"
         android:layout_below="@+id/defineCar"
         android:layout_marginTop="16dp"
-        android:text="Calculate Trip" />
+        android:text="@string/calculateTrip" />
 
     <Button
         android:id="@+id/defineCar"
@@ -35,7 +35,7 @@
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:onClick = "defineCar1"
-        android:text="Vehicle Setup" />
+        android:onClick="defineCar1"
+        android:text="@string/vehicleSetup" />
 
 </RelativeLayout>

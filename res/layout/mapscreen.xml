@@ -30,7 +30,7 @@
         android:layout_marginLeft="5dp"
         android:background="#ee333333"
         android:gravity="center"
-        android:text="Your Vehicle"
+        android:text="@string/yourVehicle"
         android:textAppearance="?android:attr/textAppearanceMedium" />
     
     <TextView
@@ -43,7 +43,7 @@
         android:layout_marginLeft="5dp"
         android:background="#ee777777"
         android:gravity="center"
-        android:text="Your Vehicle"
+        android:text="@string/yourVehicle"
         android:textAppearance="?android:attr/textAppearanceMedium" />
     
     <TextView
@@ -56,7 +56,7 @@
         android:layout_marginRight="5dp"
         android:background="#ee777777"
         android:gravity="center"
-        android:text="Your Vehicle"
+        android:text="@string/public_transit"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
