@@ -60,13 +60,18 @@ public class MainActivity extends Screen
     private Button calcTrip;
     private Button defineCar;
 
-
+    /**
+     * Initialize data
+     */
     public void initialize()
     {
         calcTrip.setEnabled(true);
         defineCar.setEnabled(true);
     }
 
+    /**
+     * Starts a new activity to define a car
+     */
     public void defineCarClicked()
     {
         //go to the car setup page
@@ -75,12 +80,20 @@ public class MainActivity extends Screen
 
     }
 
+    /**
+     * Starts a new activity to define a car...
+     * @param view The current view (maybe?) It is unused, and is there for the
+     * "Signature".
+     */
     public void defineCar1(View view)
     {
         startActivity(new Intent(this, AutoScreen.class));
 
     }
 
+    /**
+     * Called when the calcTrip button is clicked.
+     */
     public void calcTripClicked()
     {
         //go to the calc trip page
