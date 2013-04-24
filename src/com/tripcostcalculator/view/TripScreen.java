@@ -1,7 +1,11 @@
 package com.tripcostcalculator.view;
 
+import android.view.View;
+import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
+import android.content.Context;
+import sofia.app.Screen;
 
 // -------------------------------------------------------------------------
 /**
@@ -12,7 +16,7 @@ import android.widget.EditText;
  *  @version Apr 14, 2013
  */
 
-public class TripScreen
+public class TripScreen extends Screen
 {
     private EditText startLoc;
     private EditText endLoc;
@@ -27,20 +31,20 @@ public class TripScreen
     {
         //again maybe set this to true if it is easier to get it to work
         tripOkButton.setEnabled(false);
-        // We don't need these -- already set
-        /*
-        startLoc.setText("Set Start");
-        endLoc.setText("Set End");
-        gasPrice.setText("Current Gas Price"); */
+        startLoc.setText("");
+        endLoc.setText("");
+        gasPrice.setText("");
     }
 
     // ----------------------------------------------------------
     /**
      * We start calculations and take user to the map screen.
      */
-    public void tripOkButtonClicked()
+    public void tripOkButtonClicked(View view)
     {
         //take us to the map page
+        startActivity(new Intent(this, MapScreen.class));
+
     }
 
 

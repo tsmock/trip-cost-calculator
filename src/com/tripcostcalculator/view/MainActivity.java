@@ -7,8 +7,6 @@ import android.location.LocationManager;
 import android.content.Context;
 import com.tripcostcalculator.information.UserLocation;
 import sofia.app.Screen;
-//import android.app.Activity; //not currently used
-//import android.view.Menu;
 
 // -------------------------------------------------------------------------
 /**
@@ -19,13 +17,14 @@ import sofia.app.Screen;
  * @author Tyler Leskanic (tyler47)
  * @version Mar 7, 2013
  */
-public class MainActivity extends Screen
+public class MainActivity
+    extends Screen
 {
-    //TODO add links (TOS stuff) for:
+    // TODO add links (TOS stuff) for:
     // http://www.google.com/privacy.html
     // http://www.google.com/intl/en_us/help/terms_maps.html
     // http://www.google.com/intl/en_us/policies/privacy/
-    //TODO TOS stuff
+    // TODO TOS stuff
     // Add our own TOS and Privacy Policy
     // Add powered by Google next to map. The defaults might work (depends)
     // We must show the corresponding google map
@@ -35,30 +34,9 @@ public class MainActivity extends Screen
     // We can't use this for turn-by-turn navigation. (10.2(c)(i))
     /** The location of the user. May want to update from time to time */
     public UserLocation loc;
+    private Button      calcTrip;
+    private Button      defineCar;
 
-
-
-    /**
-     * We set up the user location
-     */
-    public void setUpUserLocation()
-    {
-        loc = new UserLocation(
-            (LocationManager) this.getSystemService(Context.LOCATION_SERVICE));
-    }
-
-
-
-    /**
-     * We update the user location
-     */
-    public void updateUserLocation()
-    {
-        loc.updateLoc();
-    }
-
-    private Button calcTrip;
-    private Button defineCar;
 
     /**
      * Initialize data
@@ -69,33 +47,50 @@ public class MainActivity extends Screen
         defineCar.setEnabled(true);
     }
 
-    /**
-     * Starts a new activity to define a car
-     */
-    public void defineCarClicked()
-    {
-        //go to the car setup page
-        //presentScreen(AutoScreen.class, auto);
-        startActivity(new Intent(this, AutoScreen.class));
 
+    /**
+     * We set up the user location
+     */
+    public void setUpUserLocation()
+    {
+        loc =
+            new UserLocation(
+                (LocationManager)this
+                    .getSystemService(Context.LOCATION_SERVICE));
     }
+
+
+    /**
+     * We update the user location
+     */
+    public void updateUserLocation()
+    {
+        loc.updateLoc();
+    }
+
 
     /**
      * Starts a new activity to define a car...
-     * @param view The current view (maybe?) It is unused, and is there for the
-     * "Signature".
+     *
+     * @param view
+     *            The current view (maybe?) It is unused, and is there for the
+     *            "Signature".
      */
-    public void defineCar1(View view)
+    public void defineCarClicked(View view)
     {
+        // go to the car setup page
         startActivity(new Intent(this, AutoScreen.class));
 
     }
+
 
     /**
      * Called when the calcTrip button is clicked.
      */
-    public void calcTripClicked()
+    public void calcTripClicked(View view)
     {
-        //go to the calc trip page
+        // go to the calc trip page
+        startActivity(new Intent(this, TripScreen.class));
     }
+
 }

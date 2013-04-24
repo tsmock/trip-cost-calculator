@@ -47,6 +47,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.tripcostcalculator.view.AutoScreen"></activity>
+        <activity android:name="com.tripcostcalculator.view.TripScreen"></activity>
+        <activity android:name="com.tripcostcalculator.view.MapScreen"></activity>
 
         <uses-library android:name="android.test.runner" />
 

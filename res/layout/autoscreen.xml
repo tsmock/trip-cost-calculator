@@ -30,7 +30,8 @@
         android:layout_below="@+id/autoMPG"
         android:layout_marginTop="16dp"
         android:text="@android:string/ok"
-        android:textColor="@color/White" />
+        android:textColor="@color/White"
+        android:onClick="autoOkClicked" />
 
     <EditText
         android:id="@+id/autoYear"

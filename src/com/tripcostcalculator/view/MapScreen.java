@@ -1,6 +1,7 @@
 package com.tripcostcalculator.view;
 
 import android.widget.TextView;
+import sofia.app.Screen;
 
 // -------------------------------------------------------------------------
 /**
@@ -12,7 +13,7 @@ import android.widget.TextView;
  *  @version Apr 14, 2013
  */
 
-public class MapScreen
+public class MapScreen extends Screen
 {
     private TextView publicTransit;
     private TextView yourVehicle;

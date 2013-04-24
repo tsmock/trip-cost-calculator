@@ -26,6 +26,7 @@
         android:layout_alignLeft="@+id/defineCar"
         android:layout_below="@+id/defineCar"
         android:layout_marginTop="16dp"
+        android:onClick="calcTripClicked"
         android:text="@string/calculateTrip" />
 
     <Button
@@ -35,7 +36,7 @@
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:onClick="defineCar1"
+        android:onClick="defineCarClicked"
         android:text="@string/vehicleSetup" />
 
 </RelativeLayout>

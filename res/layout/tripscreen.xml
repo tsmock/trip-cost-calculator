@@ -54,7 +54,8 @@
         android:layout_below="@+id/gasPrice"
         android:layout_marginTop="30dp"
         android:text="@android:string/ok"
-        android:textColor="@color/White" />
+        android:textColor="@color/White" 
+        android:onClick="tripOkButtonClicked"/>
 
     <EditText
         android:id="@+id/gasPrice"
@@ -64,6 +65,7 @@
         android:layout_below="@+id/endLoc"
         android:layout_marginTop="18dp"
         android:ems="10"
+        android:hint="@string/currentGasPrice"
         android:inputType="number"
         android:text="@string/currentGasPrice"
         android:textColor="@color/White" />
