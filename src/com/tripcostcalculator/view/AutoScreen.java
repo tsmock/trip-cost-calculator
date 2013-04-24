@@ -1,7 +1,8 @@
 package com.tripcostcalculator.view;
 
-import android.view.View;
-import android.content.Intent;
+import android.util.Log;
+//import android.view.View;
+//import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
 import sofia.app.Screen;
@@ -28,14 +29,13 @@ public class AutoScreen
 
     public void initialize()
     {
-        // maybe set the button to always be true if it makes everything easier
-        // to run
         autoOk.setEnabled(false);
         autoMPG.setText("");
         autoYear.setText("");
         autoMake.setText("");
         autoModel.setText("");
         done = new boolean[] { false, false, false, false };
+        Log.d("Works", "works");
     }
 
 
@@ -43,10 +43,10 @@ public class AutoScreen
     /**
      * We store the values and go back to the trip page.
      */
-    public void autoOkClicked(View view)
+    public void autoOkClicked()
     {
-        // store values and go to the trip page
-        startActivity(new Intent(this, TripScreen.class));
+        Log.d("clicked", "clicked");
+        presentScreen(TripScreen.class);
     }
 
 
@@ -56,15 +56,19 @@ public class AutoScreen
      */
     public void autoMakeEditingDone()
     {
+        Log.d("AUTO", "Make");
         if (autoMake.getText().toString() != "")
         {
             done[1] = true; // TODO add more stuff
+            Log.d("Editing Done", "true");
         }
         else
         {
             done[1] = false;
+            Log.d("Editing Done", "false");
+
         }
-        this.isEditingDone();
+        this.update();
     }
 
 
@@ -74,6 +78,7 @@ public class AutoScreen
      */
     public void autoModelEditingDone()
     {
+        Log.d("AUTO", "Model");
         if (autoModel.getText().toString() != "")
         {
             done[2] = true; // TODO add more stuff
@@ -82,7 +87,7 @@ public class AutoScreen
         {
             done[2] = false;
         }
-        this.isEditingDone();
+        this.update();
     }
 
 
@@ -92,6 +97,7 @@ public class AutoScreen
      */
     public void autoYearEditingDone()
     {
+        Log.d("AUTO", "YEAR");
         if (autoYear.getText().toString() != "")
         {
             done[0] = true; // TODO add more stuff here.
@@ -100,7 +106,7 @@ public class AutoScreen
         {
             done[0] = false;
         }
-        this.isEditingDone();
+        this.update();
     }
 
 
@@ -110,15 +116,20 @@ public class AutoScreen
      */
     public void autoMPGEditingDone()
     {
+        Log.d("AUTO", "MPG");
+
         if (autoMPG.getText().toString() != "")
         {
             done[3] = true; // TODO add more stuff here
+            Log.d("output", "true");
         }
         else
         {
             done[3] = false;
+            Log.d("output", "false");
+
         }
-        this.isEditingDone();
+        this.update();
     }
 
 
@@ -127,11 +138,10 @@ public class AutoScreen
      *
      * @return do we have sufficient information go get MPG?
      */
-    private boolean isEditingDone()
+    private boolean update()
     {
         // done[3] is the mpg. done[0-2] give enough info to get MPG
-        if (done[3] == true
-            || (done[0] == true && done[1] == true && done[2] == true))
+        if (done[3] || (done[0] && done[1] && done[2]))
         {
             autoOk.setEnabled(true);
             return true;

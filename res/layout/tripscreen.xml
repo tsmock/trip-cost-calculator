@@ -54,8 +54,7 @@
         android:layout_below="@+id/gasPrice"
         android:layout_marginTop="30dp"
         android:text="@android:string/ok"
-        android:textColor="@color/White" 
-        android:onClick="tripOkButtonClicked"/>
+        android:textColor="@color/White"/>
 
     <EditText
         android:id="@+id/gasPrice"

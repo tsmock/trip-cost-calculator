@@ -1,7 +1,7 @@
 package com.tripcostcalculator.view;
 
-import android.content.Intent;
-import android.view.View;
+//import android.content.Intent;
+//import android.view.View;
 import android.widget.Button;
 import android.location.LocationManager;
 import android.content.Context;
@@ -71,26 +71,21 @@ public class MainActivity
 
     /**
      * Starts a new activity to define a car...
-     *
-     * @param view
-     *            The current view (maybe?) It is unused, and is there for the
-     *            "Signature".
      */
-    public void defineCarClicked(View view)
+    public void defineCarClicked()
     {
         // go to the car setup page
-        startActivity(new Intent(this, AutoScreen.class));
-
+        presentScreen(AutoScreen.class);
     }
 
 
     /**
      * Called when the calcTrip button is clicked.
      */
-    public void calcTripClicked(View view)
+    public void calcTripClicked()
     {
         // go to the calc trip page
-        startActivity(new Intent(this, TripScreen.class));
+        presentScreen(TripScreen.class);
     }
 
 }

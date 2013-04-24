@@ -9,19 +9,22 @@ import sofia.app.Screen;
 
 // -------------------------------------------------------------------------
 /**
- *  The screen where trip details are entered.
+ * The screen where trip details are entered.
  *
- *  @author Gareth Griffith (gareth00)
- *  @author Taylor Smock (tsmock)
- *  @version Apr 14, 2013
+ * @author Gareth Griffith (gareth00)
+ * @author Taylor Smock (tsmock)
+ * @version Apr 14, 2013
  */
 
-public class TripScreen extends Screen
+public class TripScreen
+    extends Screen
 {
     private EditText startLoc;
     private EditText endLoc;
     private EditText gasPrice;
-    private Button tripOkButton;
+    private Button   tripOkButton;
+    private boolean[] done;
+
 
     // ----------------------------------------------------------
     /**
@@ -29,22 +32,23 @@ public class TripScreen extends Screen
      */
     public void initialize()
     {
-        //again maybe set this to true if it is easier to get it to work
-        tripOkButton.setEnabled(false);
+        // again maybe set this to true if it is easier to get it to work
+        tripOkButton.setEnabled(true);
         startLoc.setText("");
         endLoc.setText("");
         gasPrice.setText("");
+        done = new boolean[] {false, false, false};
     }
+
 
     // ----------------------------------------------------------
     /**
      * We start calculations and take user to the map screen.
      */
-    public void tripOkButtonClicked(View view)
+    public void tripOkButtonClicked()
     {
-        //take us to the map page
-        startActivity(new Intent(this, MapScreen.class));
-
+        // take us to the map page
+        presentScreen(MapScreen.class);
     }
 
 
@@ -53,8 +57,16 @@ public class TripScreen extends Screen
      */
     public void endLocEditingDone()
     {
-        endLoc.getText().toString();
-        //TODO something with endLoc.
+        if(endLoc.getText().toString() != "")
+        {
+            done[0] = true;
+        }
+        else
+        {
+            done[0] = false;
+        }
+        this.update();
+        // TODO something with endLoc.
     }
 
 
@@ -63,8 +75,15 @@ public class TripScreen extends Screen
      */
     public void startLocEditingDone()
     {
-        startLoc.getText().toString();
-        //TODO something with startLoc;
+        if(startLoc.getText().toString() != "")
+        {
+            done[1] = true;
+        }
+        else
+        {
+            done[1] = false;
+        }
+        // TODO something with startLoc;
     }
 
 
@@ -73,7 +92,30 @@ public class TripScreen extends Screen
      */
     public void gasPriceEditingDone()
     {
+        if(gasPrice.getText().toString() != "")
+        {
+            done[2] = true;
+        }
+        else
+        {
+            done[2] = false;
+        }
         Double.parseDouble(this.gasPrice.getText().toString());
-        //TODO something with gas price
+        // TODO something with gas price
+    }
+
+    private boolean update()
+    {
+        // done[3] is the mpg. done[0-2] give enough info to get MPG
+        if (done[0] && done[1] && done[2])
+        {
+            tripOkButton.setEnabled(true);
+            return true;
+        }
+        else
+        {
+            tripOkButton.setEnabled(false);
+            return false;
+        }
     }
 }
