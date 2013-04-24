@@ -134,4 +134,13 @@ public class WebsiteInformation
             return true;
         }
     }
+
+    // ----------------------------------------------------------
+    /**
+     * @return The website URL
+     */
+    public String getWebsiteURL()
+    {
+        return this.websiteURL;
+    }
 }
