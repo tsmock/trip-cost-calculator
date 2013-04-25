@@ -1,8 +1,7 @@
 package com.tripcostcalculator.model;
 
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
+import junit.framework.TestCase;
+
 
 // -------------------------------------------------------------------------
 /**
@@ -28,7 +27,7 @@ import org.junit.Test;
  *  <http://www.gnu.org/licenses/>.
  */
 
-public class TollTest
+public class TollTest extends TestCase
 {
     private Toll toll;
     private float tollAmount;
@@ -40,7 +39,6 @@ public class TollTest
      * Set up toll.
      * @throws java.lang.Exception
      */
-    @Before
     public void setUp()
         throws Exception
     {
@@ -54,7 +52,6 @@ public class TollTest
     /**
      * We test the get name method
      */
-    @Test
     public void testGetName()
     {
         assertEquals(tollName, toll.getName());
@@ -64,7 +61,6 @@ public class TollTest
     /**
      * We test the getToll method
      */
-    @Test
     public void testGetCosts()
     {
         assertEquals(tollAmount, toll.getCosts(), 0.1);
@@ -74,7 +70,6 @@ public class TollTest
     /**
      * We test the setToll method
      */
-    @Test
     public void testSetCosts()
     {
         assertEquals(tollAmount, toll.getCosts(), 0.1);
@@ -87,7 +82,6 @@ public class TollTest
     /**
      * We test the distance get methods
      */
-    @Test
     public void testGetDistance()
     {
         assertEquals(this.tollDistance, toll.getDistance(), 0.1);
@@ -97,7 +91,6 @@ public class TollTest
     /**
      * We test setting the distance
      */
-    @Test
     public void testSetDistance()
     {
         assertEquals(this.tollDistance, toll.getDistance(), 0.1);

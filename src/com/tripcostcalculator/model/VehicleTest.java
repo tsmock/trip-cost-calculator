@@ -1,8 +1,8 @@
 package com.tripcostcalculator.model;
 
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
+import junit.framework.TestCase;
+
+
 
 // -------------------------------------------------------------------------
 /**
@@ -28,7 +28,7 @@ import org.junit.Test;
  *  <http://www.gnu.org/licenses/>.
  */
 
-public class VehicleTest
+public class VehicleTest extends TestCase
 {
     /** The vehicle that we will be testing */
     Vehicle test;
@@ -37,7 +37,6 @@ public class VehicleTest
      * Initializes variables
      * @throws java.lang.Exception
      */
-    @Before
     public void setUp()
         throws Exception
     {
@@ -49,7 +48,6 @@ public class VehicleTest
      * Test method for {@link com.tripcostcalculator.model
      * .Vehicle#getVehicleName()}.
      */
-    @Test
     public void testGetVehicleName()
     {
         assertEquals("S300", test.getVehicleName());
@@ -59,7 +57,6 @@ public class VehicleTest
     /**
      * Test method for {@link com.tripcostcalculator.model.Vehicle#getMpg()}.
      */
-    @Test
     public void testGetMpg()
     {
         assertEquals(40, test.getMpg(), .1);
@@ -69,7 +66,6 @@ public class VehicleTest
     /**
      * Test method for {@link com.tripcostcalculator.model.Vehicle#setMpg(float)}.
      */
-    @Test
     public void testSetMpg()
     {
         assertEquals(40, test.getMpg(), .1);
