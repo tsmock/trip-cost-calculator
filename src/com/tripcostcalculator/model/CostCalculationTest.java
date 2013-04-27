@@ -1,8 +1,7 @@
 package com.tripcostcalculator.model;
 
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
+import junit.framework.TestCase;
+
 
 // -------------------------------------------------------------------------
 /**
@@ -28,7 +27,7 @@ import org.junit.Test;
  *  <http://www.gnu.org/licenses/>.
  */
 
-public class CostCalculationTest
+public class CostCalculationTest extends TestCase
 {
     private CostCalculation test;
 
@@ -37,7 +36,6 @@ public class CostCalculationTest
      * We set up variables.
      * @throws java.lang.Exception
      */
-    @Before
     public void setUp()
         throws Exception
     {
@@ -48,7 +46,6 @@ public class CostCalculationTest
     /**
      * We test adding routes. Also getting (some) routes
      */
-    @Test
     public void testAddRoutesGetRoutes()
     {
         test.addRoutes(new Toll("New York City Bridge", 10, 40));
@@ -60,7 +57,6 @@ public class CostCalculationTest
     /**
      * We test that null comes back if there is no route
      */
-    @Test
     public void testGetNullRoutes()
     {
         assertNull(test.getRoutes("The non-existent plane"));
@@ -71,7 +67,6 @@ public class CostCalculationTest
     /**
      * We test adding routes
      */
-    @Test
     public void testAddRoutes()
     {
         assertNull(test.getRoutes("testing"));
@@ -83,7 +78,6 @@ public class CostCalculationTest
     /**
      * We test calculations of cost
      */
-    @Test
     public void testTripCost()
     {
         assertEquals(0, test.tripCost(), 0.1);

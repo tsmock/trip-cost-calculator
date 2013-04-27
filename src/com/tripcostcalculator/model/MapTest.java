@@ -1,8 +1,6 @@
 package com.tripcostcalculator.model;
 
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
+import junit.framework.TestCase;
 
 // -------------------------------------------------------------------------
 /**
@@ -28,7 +26,7 @@ import org.junit.Test;
  *  <http://www.gnu.org/licenses/>.
  */
 
-public class MapTest
+public class MapTest extends TestCase
 {
     private Map map;
     // ----------------------------------------------------------
@@ -36,7 +34,6 @@ public class MapTest
      * Initializes the necessary variables.
      * @throws java.lang.Exception
      */
-    @Before
     public void setUp()
         throws Exception
     {
@@ -47,7 +44,6 @@ public class MapTest
     /**
      * Test method for {@link com.tripcostcalculator.model.Map#setStart(java.lang.String)}.
      */
-    @Test
     public void testSetStart()
     {
         assertEquals("VT", map.getStart());
@@ -59,7 +55,6 @@ public class MapTest
     /**
      * Test method for {@link com.tripcostcalculator.model.Map#getStart()}.
      */
-    @Test
     public void testGetStart()
     {
         assertEquals("VT", map.getStart());
@@ -69,7 +64,6 @@ public class MapTest
     /**
      * Test method for {@link com.tripcostcalculator.model.Map#setEnd(java.lang.String)}.
      */
-    @Test
     public void testSetEnd()
     {
         assertEquals("Nowhere", map.getEnd());
@@ -81,7 +75,6 @@ public class MapTest
     /**
      * Test method for {@link com.tripcostcalculator.model.Map#getEnd()}.
      */
-    @Test
     public void testGetEnd()
     {
         assertEquals("Nowhere", map.getEnd());

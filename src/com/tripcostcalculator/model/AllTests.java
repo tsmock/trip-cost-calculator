@@ -1,5 +1,6 @@
 package com.tripcostcalculator.model;
 
+import junit.framework.TestSuite;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -30,7 +31,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ MapTest.class, VehicleTest.class, TollTest.class,
     CostCalculationTest.class })
-public class AllTests
+public class AllTests extends TestSuite
 {
     //This should do nothing.
 }

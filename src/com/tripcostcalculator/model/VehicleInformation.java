@@ -1,9 +1,6 @@
 package com.tripcostcalculator.model;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.FileNotFoundException;
-import java.io.FileInputStream;
+import java.util.Scanner;
 import com.tripcostcalculator.information.WebsiteInformation;
 
 // -------------------------------------------------------------------------
@@ -23,6 +20,7 @@ public class VehicleInformation
     private String             makeModelString;
     private WebsiteInformation vehicle;
     private String             vehicleString;
+    private Vehicle            vehicleObj;
 
 
     /**
@@ -106,71 +104,56 @@ public class VehicleInformation
      */
     public void setVehicleString(String vehicleString)
     {
-        this.vehicleString = vehicleString;
-        // TODO add logic to get the next web page/set of information
-    }
+        this.vehicleString = vehicleString;// TODO get the vehicle ID instead
+        this.makeModel.saveFile();
 
-
-    // ----------------------------------------------------------
-    /**
-     * @return the manufacturer
-     */
-    public WebsiteInformation getManufacturer()
-    {
-        return manufacturer;
-    }
-
-
-    // ----------------------------------------------------------
-    /**
-     * @param manufacturer
-     *            the manufacturer to set
-     */
-    public void setManufacturer(WebsiteInformation manufacturer)
-    {
-        this.manufacturer = manufacturer; // TODO fill in info automagically
-    }
-
-
-    // ----------------------------------------------------------
-    /**
-     * @return the makeModel
-     */
-    public WebsiteInformation getMakeModel()
-    {
-        return makeModel;
-    }
-
-
-    // ----------------------------------------------------------
-    /**
-     * @param makeModel
-     *            the makeModel to set
-     */
-    public void setMakeModel(WebsiteInformation makeModel)
-    {
-        this.makeModel = makeModel;// TODO fill in info automagically
-    }
-
-
-    // ----------------------------------------------------------
-    /**
-     * @return the vehicle
-     */
-    public WebsiteInformation getVehicle()
-    {
-        return vehicle;
+        String id = this.fileToString("vehicle.info");
+        id = id.substring(0, id.lastIndexOf(this.vehicleString));
+        id = id.substring(id.lastIndexOf("vehicleID=") + 10);
+        id = id.substring(0, id.indexOf("&"));
+        this.vehicle =
+            new WebsiteInformation(
+                "http://www.fueleconomy.gov/mpg/MPG.do?action=mpgData"
+                    + "&vehicleID=" + id + "&browser=false&details=off",
+                "vehicleMPG.info");
+        float mpg = 0; // TODO change mpg somewhere
+        this.vehicleObj =
+            new Vehicle(this.vehicleString, mpg, this.vehicle.getWebsiteURL());
     }
 
 
     // ----------------------------------------------------------
     /**
      * @param vehicle
-     *            the vehicle to set
+     *            The website information object TODO remove
      */
     public void setVehicle(WebsiteInformation vehicle)
     {
         this.vehicle = vehicle; // TODO fill in info automagically
+        this.vehicle.saveFile();
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * @return The vehicle that we have gotten information on.
+     */
+    public Vehicle getVehicleInfo()
+    {
+        return this.vehicleObj;
+    }
+
+
+    private String fileToString(String file)
+    {
+        Scanner scanner = new Scanner(file);
+        String string = "";
+        while (scanner.hasNext())
+        {
+            string = string + scanner.next();
+        }
+        scanner.close();
+        return string;
     }
 
 }
