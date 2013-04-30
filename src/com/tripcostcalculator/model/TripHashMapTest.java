@@ -1,13 +1,22 @@
 package com.tripcostcalculator.model;
 
-import student.TestCase;
 
+// -------------------------------------------------------------------------
+/**
+ *  We test the TripHashMap class
+ *
+ *  @author Gareth Griffith (gareth00)
+ *  @author Taylor Smock (tsmock)
+ *  @version Apr 30, 2013
+ */
 public class TripHashMapTest
     extends student.TestCase
 {
     private TripHashMap map;
 
-
+    /**
+     * Basic setup class does nothing
+     */
     public void setUp()
     {
         // nothing to setup
