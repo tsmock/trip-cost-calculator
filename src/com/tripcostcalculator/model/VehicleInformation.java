@@ -1,5 +1,6 @@
 package com.tripcostcalculator.model;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import com.tripcostcalculator.information.WebsiteInformation;
 
@@ -116,9 +117,9 @@ public class VehicleInformation
                 "http://www.fueleconomy.gov/mpg/MPG.do?action=mpgData"
                     + "&vehicleID=" + id + "&browser=false&details=off",
                 "vehicleMPG.info");
-        float mpg = 0; // TODO change mpg somewhere
-        this.vehicleObj =
-            new Vehicle(this.vehicleString, mpg, this.vehicle.getWebsiteURL());
+        //float mpg = 0; // TODO change mpg somewhere
+        //this.vehicleObj =
+        //    new Vehicle(this.vehicleString, mpg, this.vehicle.getWebsiteURL());
     }
 
 
@@ -154,6 +155,18 @@ public class VehicleInformation
         }
         scanner.close();
         return string;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Should get the years.
+     * @return An array list of available years
+     */
+    public ArrayList<String> getYears()
+    {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

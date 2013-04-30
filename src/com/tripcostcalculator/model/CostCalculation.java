@@ -111,10 +111,10 @@ public class CostCalculation
      * We calculate the costs
      * @return The total cost of the trip
      */
-    public float tripCost()
+    public double tripCost()
     {
-        float mpg = this.vehicle.getMpg();
-        float totalCost = 0;
+        double mpg = this.vehicle.getMPG();
+        double totalCost = 0;
         for (Route route : mapDirections)
         {
             totalCost += route.getDistance() / mpg * route.getGasCost()
