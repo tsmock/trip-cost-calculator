@@ -23,8 +23,8 @@ public class AutoScreen
     private EditText  autoYear;
     private EditText  autoMake;
     private EditText  autoModel;
-    private Vehicle auto;
-    private Double mpg;
+    private Vehicle   auto;
+    private Double    mpg;
     private boolean[] done;
 
 
@@ -45,20 +45,16 @@ public class AutoScreen
      */
     public void autoOkClicked()
     {
-        //String vehicle = (autoYear.getText() + " " + autoMake.getText() + " " + autoModel.getText());
-
-        //Log.d("TEST", vehicle);
-        //need to pass the returned mpg from the backend
-
         presentScreen(TripScreen.class, autoMPG.getText().toString());
-        //presentScreen(TripScreen.class);
+        // presentScreen(TripScreen.class);
     }
 
 
     // ----------------------------------------------------------
     /**
      * Called when we finish editing the make of the vehicle.
-     */public void autoMakeEditingDone()
+     */
+    public void autoMakeEditingDone()
     {
         if (autoMake.getText().toString() != "")
         {
@@ -126,21 +122,26 @@ public class AutoScreen
 
         }
         this.update();
-        auto = new Vehicle(autoYear.getText().toString(), autoMake.getText().toString(), autoModel.getText().toString());
-        mpg = auto.getMPG();
-        autoMPG.setText(String.valueOf(mpg));
+
     }
 
 
     /**
      * Checks the status of the editingDone() fields and sets the autoOkButton
      * to true if all of the fields have been filled out.
-     *
      */
     private void update()
     {
         // done[3] is the mpg. done[0-2] give enough info to get MPG
-        if (done[3] || (done[0] && done[1] && done[2]))
+        if (done[0] && done[1] && done[2])
+        {
+            auto =
+                new Vehicle(autoMake.getText().toString(), autoModel.getText().toString(), autoYear.getText().toString());
+            mpg = auto.getMPG();
+            autoMPG.setText(String.valueOf(mpg));
+            autoOk.setEnabled(true);
+        }
+        else if(done[3])
         {
             autoOk.setEnabled(true);
         }
