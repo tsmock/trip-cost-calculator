@@ -40,37 +40,14 @@ public class VehicleTest extends TestCase
     public void setUp()
         throws Exception
     {
-        test = new Vehicle("S300", 40);
+        test = new Vehicle("Accord", "Honda", "2013");
     }
 
-
     /**
-     * Test method for {@link com.tripcostcalculator.model
-     * .Vehicle#getVehicleName()}.
-     */
-    public void testGetVehicleName()
-    {
-        assertEquals("S300", test.getVehicleName());
-    }
-
-
-    /**
-     * Test method for {@link com.tripcostcalculator.model.Vehicle#getMpg()}.
+     * Test method for {@link com.tripcostcalculator.model.Vehicle#getMPG()}.
      */
     public void testGetMpg()
     {
-        assertEquals(40, test.getMpg(), .1);
+        assertEquals(30, test.getMPG(), .1);
     }
-
-
-    /**
-     * Test method for {@link com.tripcostcalculator.model.Vehicle#setMpg(float)}.
-     */
-    public void testSetMpg()
-    {
-        assertEquals(40, test.getMpg(), .1);
-        test.setMpg(10);
-        assertEquals(10, test.getMpg(), .1);
-    }
-
 }

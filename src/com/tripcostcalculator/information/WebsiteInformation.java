@@ -4,9 +4,6 @@ import java.io.PrintWriter;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.io.IOException;
-import java.nio.channels.Channels;
-import java.io.FileOutputStream;
-import java.nio.channels.ReadableByteChannel;
 import java.net.URL;
 
 // -------------------------------------------------------------------------

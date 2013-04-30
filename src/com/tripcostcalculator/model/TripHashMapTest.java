@@ -1,16 +1,27 @@
 package com.tripcostcalculator.model;
 
-import student.TestCase;
+import junit.framework.TestCase;
 
+
+// -------------------------------------------------------------------------
+/**
+ *  We test the TripHashMap class
+ *
+ *  @author Gareth Griffith (gareth00)
+ *  @author Taylor Smock (tsmock)
+ *  @version Apr 30, 2013
+ */
 public class TripHashMapTest
-    extends student.TestCase
+    extends TestCase
 {
     private TripHashMap map;
 
-
+    /**
+     * Basic setup class does nothing
+     */
     public void setUp()
     {
-        // nothing to setup
+        map = new TripHashMap();
     }
 
 
@@ -20,6 +31,8 @@ public class TripHashMapTest
      */
     public void testAddressMap()
     {
+        assertEquals("37.2412,-80.4515",
+            map.addressMap("1755 ginger ln blacksburg va"));
         assertEquals(
             "37.2412,-80.4515",
             map.addressMap("1755 Ginger Ln Blacksburg VA"));
@@ -32,6 +45,6 @@ public class TripHashMapTest
      */
     public void testVehicleMap()
     {
-        assertEquals(30, map.addressMap("2013 honda AcCord"));
+        assertEquals(30, map.vehicleMap("2013 honda AcCord"), 0.1);
     }
 }

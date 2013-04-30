@@ -39,7 +39,7 @@ public class CostCalculationTest extends TestCase
     public void setUp()
         throws Exception
     {
-        test = new CostCalculation(new Vehicle("S300", 30));
+        test = new CostCalculation(new Vehicle("Honda", "Accord", "2013"));
     }
 
 

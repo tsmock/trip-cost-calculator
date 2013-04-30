@@ -1,7 +1,5 @@
 package com.tripcostcalculator.model;
 
-import com.tripcostcalculator.information.*;
-
 // -------------------------------------------------------------------------
 /**
  *  We do stuff with vehicles
@@ -28,96 +26,27 @@ import com.tripcostcalculator.information.*;
 
 public class Vehicle
 {
-    /** The vehicle string */
-    String vehicle;
-    /** The vehicle miles per gallon */
-    float mpg;
-    /** The url for vehicle information */
-    String vehicleURL;
+    private double mpg;
 
-
-
-
+    // ----------------------------------------------------------
     /**
-     * @param vehicle The vehicle string to return
-     * @param mpg the miles per gallon that the vehicle gets
+     * Create a new Vehicle object.
+     * @param make The make of the model
+     * @param model The model
+     * @param year The year the model was made in
      */
-    public Vehicle(String vehicle, float mpg)
+    public Vehicle(String make, String model, String year)
     {
-        this.vehicle = vehicle;
-        this.mpg = mpg;
+        TripHashMap map = new TripHashMap();
+        mpg = map.vehicleMap(year + " " + make + " " + model);
     }
 
-
-
+    // ----------------------------------------------------------
     /**
-     * @param vehicle The vehicle string to return
-     * @param mpg the miles per gallon that the vehicle gets
-     * @param vehicleURL the url that vehicle information is at
+     * @return The MPG of the vehicle given.
      */
-    public Vehicle(String vehicle, float mpg, String vehicleURL)
-    {
-        this(vehicle, mpg);
-        this.vehicleURL = vehicleURL;
-    }
-
-
-
-    /**
-     * @return The name of the vehicle
-     */
-    public String getVehicleName()
-    {
-        return this.vehicle;
-    }
-
-
-    /**
-     * @return The miles per gallon of the vehicle
-     */
-    public float getMpg()
+    public double getMPG()
     {
         return this.mpg;
-    }
-
-
-    /**
-     * @param mpg The new miles per gallon of the vehicle
-     */
-    public void setMpg(float mpg)
-    {
-        this.mpg = mpg;
-    }
-
-
-
-    /**
-     * @param vehicleURL The new url to get vehicle information
-     */
-    public void setURL(String vehicleURL)
-    {
-        this.vehicleURL = vehicleURL;
-    }
-
-
-    /**
-     * @return The url that we are getting vehicle information from
-     */
-    public String getURL()
-    {
-        return this.vehicleURL;
-    }
-
-    /**
-     * We get the file for mpg and stuff...
-     */
-    public void getFile()
-    {
-        if (this.vehicleURL != null)
-        {
-            WebsiteInformation info = new WebsiteInformation(this.vehicleURL,
-            this.vehicle + ".txt");
-            info.saveFile();
-        }
     }
 }
