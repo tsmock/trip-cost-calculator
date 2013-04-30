@@ -41,7 +41,7 @@ public class Vehicle
         mpg = map.vehicleMap(year + " " + make + " " + model);
         if (mpg == null)
         {
-            mpg = 30.0;
+            mpg = 0.0;
         }
     }
 
