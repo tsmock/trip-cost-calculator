@@ -107,8 +107,9 @@ public class TripLocation
      *
      * @param destination
      *            A string of the destination.
+     * @return The lat-long of the destination
      */
-    public void setDestination(String destination)
+    public String setDestination(String destination)
     {
         TripHashMap map = new TripHashMap();
         String dest = map.addressMap(destination);
@@ -116,5 +117,17 @@ public class TripLocation
             Double.parseDouble(dest.substring(0, dest.indexOf(",") - 1));
         double lon = Double.parseDouble(dest.substring(dest.indexOf("," + 1)));
         this.getDistance(lat, lon);
+        return lat + ", " + lon;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Gets the starting latitude and longitude.
+     * @return The latitude and longitude in the format "lat, long"
+     */
+    public String getStartLatLong()
+    {
+        return this.latitude + ", " + this.longitude;
     }
 }

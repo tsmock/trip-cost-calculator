@@ -64,6 +64,7 @@ public class TripHashMap
             "1600 amphitheatre pkwy mountain view ca",
             "37.422816,-122.085091");
         map.put("1065 la avenida st mountain view ca", "37.41232,-122.07184");
+        map.put("444 castro st mountain view ca", "37.39096,-122.08103");
         String address2 = address.toLowerCase();
 
         return map.get(address2);
