@@ -1,6 +1,5 @@
 package com.tripcostcalculator.model;
 
-import android.annotation.SuppressLint;
 import java.util.*;
 
 // -------------------------------------------------------------------------
@@ -12,7 +11,6 @@ import java.util.*;
  *  @author Taylor Smock (tsmock)
  *  @version Apr 30, 2013
  */
-@SuppressLint("DefaultLocale")
 public class TripHashMap
 {
 //    public static void main(String args[])
@@ -38,7 +36,7 @@ public class TripHashMap
      * @param vehicle The vehicle string to find
      * @return The vehicle's mpg
      */
-    public String vehicleMap(String vehicle)
+    public Double vehicleMap(String vehicle)
     {
         HashMap<String, Double> map = new HashMap<String, Double>();
         map.put("2013 honda accord", Double.valueOf(30));
@@ -50,7 +48,7 @@ public class TripHashMap
         map.put("2012 audi a6", Double.valueOf(21));
 
         String vehicle2 = vehicle.toLowerCase();
-        return map.get(vehicle2).toString();
+        return map.get(vehicle2);
     }
 
 
@@ -67,6 +65,7 @@ public class TripHashMap
         map.put("1600 pennsylvania ave washington dc", "38.897096,-77.036545");
 
         String address2 = address.toLowerCase();
-        return map.get(address2).toString();
+
+        return map.get(address2);
     }
 }
