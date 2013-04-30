@@ -28,7 +28,6 @@
         android:layout_marginTop="35dp"
         android:ems="10"
         android:hint="@string/setStart"
-        android:text="@string/setStart"
         android:textColor="@color/White" >
 
         <requestFocus />
@@ -43,7 +42,6 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/setEnd"
-        android:text="@string/setEnd"
         android:textColor="@color/White" />
 
     <Button
@@ -66,7 +64,6 @@
         android:ems="10"
         android:hint="@string/currentGasPrice"
         android:inputType="number"
-        android:text="@string/currentGasPrice"
         android:textColor="@color/White" />
 
 </RelativeLayout>

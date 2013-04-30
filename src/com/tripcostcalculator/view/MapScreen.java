@@ -1,7 +1,5 @@
 package com.tripcostcalculator.view;
 
-// import android.support.v4.app.FragmentActivity;
-//import sofia.graphics.Color;
 import android.location.Location;
 import android.graphics.Color;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -19,6 +17,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import sofia.app.*;
 
 // -------------------------------------------------------------------------
 /**
@@ -34,10 +33,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapScreen
     extends Activity
 {
-//    static final LatLng BLACKSBURG = new LatLng(37.2294, -80.4142);
     static final LatLng BLACKSBURG = new LatLng(37.2294, -80.4142);
-    static final LatLng DROID    = new LatLng(37.1297, -80.4192);
-    private Location bburg;
+    static final LatLng DROID      = new LatLng(37.1297, -80.4192);
+    private Location    bburg;
     private GoogleMap   map;
     private TextView    publicTransit;
     private TextView    yourVehicle;
@@ -51,7 +49,6 @@ public class MapScreen
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mapscreen);
-        final LatLng DD    = new LatLng(37.1297, -80.4192);
 
         publicTransit = (TextView)findViewById(R.id.publicTransit);
         publicTransit.setText("Public Transit");
@@ -70,12 +67,12 @@ public class MapScreen
         uiSettings = map.getUiSettings();
         map.isMyLocationEnabled();
         map.getUiSettings().setCompassEnabled(true);
-        //uiSettings.setMyLocationButtonEnabled(true);
+        // uiSettings.setMyLocationButtonEnabled(true);
         map.getUiSettings().setMyLocationButtonEnabled(true);
 
         Marker hamburg =
-            map.addMarker(new MarkerOptions().position(DD)
-                .title("Hamburg"));
+            map.addMarker(new MarkerOptions().position(BLACKSBURG).title(
+                "Hamburg"));
         Marker kiel =
             map.addMarker(new MarkerOptions()
                 .position(DROID)
@@ -85,28 +82,100 @@ public class MapScreen
                     BitmapDescriptorFactory
                         .fromResource(R.drawable.ic_launcher)));
 
-        // Move the camera instantly to hamburg with a zoom of 15.
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(BLACKSBURG, 15));
 
         // Zoom in, animating the camera.
         map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
 
-//        Polyline line = map.addPolyline(new PolylineOptions()
-//        .add(BLACKSBURG, DROID).width(5).color(0xFF0000));
-
-        Polyline line = map.addPolyline(new PolylineOptions()
-        .add(BLACKSBURG, DROID).geodesic(true)
-        .width(5)
-        .color(Color.RED));
+        Polyline line =
+            map.addPolyline(new PolylineOptions().add(BLACKSBURG, DROID)
+                .geodesic(true).width(5).color(Color.RED));
     }
 
 
+// @Override
+// public void onResume()
+// {
+// map =
+// ((MapFragment)getFragmentManager().findFragmentById(R.id.map))
+// .getMap();
+// map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+//
+// uiSettings = map.getUiSettings();
+// map.isMyLocationEnabled();
+// map.getUiSettings().setCompassEnabled(true);
+// //uiSettings.setMyLocationButtonEnabled(true);
+// map.getUiSettings().setMyLocationButtonEnabled(true);
+//
+// Marker hamburg =
+// map.addMarker(new MarkerOptions().position(BLACKSBURG)
+// .title("Hamburg"));
+// Marker kiel =
+// map.addMarker(new MarkerOptions()
+// .position(DROID)
+// .title("Droid")
+// .snippet("Droid is cool")
+// .icon(
+// BitmapDescriptorFactory
+// .fromResource(R.drawable.ic_launcher)));
+//
+// // Move the camera instantly to hamburg with a zoom of 15.
+// map.moveCamera(CameraUpdateFactory.newLatLngZoom(BLACKSBURG, 15));
+//
+// // Zoom in, animating the camera.
+// map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+//
+// // Polyline line = map.addPolyline(new PolylineOptions()
+// // .add(BLACKSBURG, DROID).width(5).color(0xFF0000));
+//
+// Polyline line = map.addPolyline(new PolylineOptions()
+// .add(BLACKSBURG, DROID).geodesic(true)
+// .width(5)
+// .color(Color.RED));
+// }
+// public void initialize()
+// {
+// map =
+// ((MapFragment)getFragmentManager().findFragmentById(R.id.map))
+// .getMap();
+// map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+//
+// uiSettings = map.getUiSettings();
+// map.isMyLocationEnabled();
+// map.getUiSettings().setCompassEnabled(true);
+// //uiSettings.setMyLocationButtonEnabled(true);
+// map.getUiSettings().setMyLocationButtonEnabled(true);
+//
+// Marker hamburg =
+// map.addMarker(new MarkerOptions().position(BLACKSBURG)
+// .title("Hamburg"));
+// Marker kiel =
+// map.addMarker(new MarkerOptions()
+// .position(DROID)
+// .title("Droid")
+// .snippet("Droid is cool")
+// .icon(
+// BitmapDescriptorFactory
+// .fromResource(R.drawable.ic_launcher)));
+//
+// // Move the camera instantly to hamburg with a zoom of 15.
+// map.moveCamera(CameraUpdateFactory.newLatLngZoom(BLACKSBURG, 15));
+//
+// // Zoom in, animating the camera.
+// map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+//
+// // Polyline line = map.addPolyline(new PolylineOptions()
+// // .add(BLACKSBURG, DROID).width(5).color(0xFF0000));
+//
+// Polyline line = map.addPolyline(new PolylineOptions()
+// .add(BLACKSBURG, DROID).geodesic(true)
+// .width(5)
+// .color(Color.RED));
+// }
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
-    // TODO Bring in the MapFragment object from Google Maps
 }

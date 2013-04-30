@@ -1,6 +1,6 @@
 package com.tripcostcalculator.model;
 
-import junit.framework.TestCase;
+import student.TestCase;
 
 
 // -------------------------------------------------------------------------

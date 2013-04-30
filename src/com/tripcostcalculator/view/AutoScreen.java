@@ -1,8 +1,7 @@
 package com.tripcostcalculator.view;
 
+import com.tripcostcalculator.model.Vehicle;
 import android.util.Log;
-//import android.view.View;
-//import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
 import sofia.app.Screen;
@@ -24,6 +23,8 @@ public class AutoScreen
     private EditText  autoYear;
     private EditText  autoMake;
     private EditText  autoModel;
+    private Vehicle auto;
+    private Double mpg;
     private boolean[] done;
 
 
@@ -35,7 +36,6 @@ public class AutoScreen
         autoMake.setText("");
         autoModel.setText("");
         done = new boolean[] { false, false, false, false };
-        Log.d("Works", "works");
     }
 
 
@@ -45,27 +45,28 @@ public class AutoScreen
      */
     public void autoOkClicked()
     {
-        Log.d("clicked", "clicked");
-        presentScreen(TripScreen.class);
+        //String vehicle = (autoYear.getText() + " " + autoMake.getText() + " " + autoModel.getText());
+
+        //Log.d("TEST", vehicle);
+        //need to pass the returned mpg from the backend
+
+        presentScreen(TripScreen.class, autoMPG.getText().toString());
+        //presentScreen(TripScreen.class);
     }
 
 
     // ----------------------------------------------------------
     /**
      * Called when we finish editing the make of the vehicle.
-     */
-    public void autoMakeEditingDone()
+     */public void autoMakeEditingDone()
     {
-        Log.d("AUTO", "Make");
         if (autoMake.getText().toString() != "")
         {
-            done[1] = true; // TODO add more stuff
-            Log.d("Editing Done", "true");
+            done[1] = true;
         }
         else
         {
             done[1] = false;
-            Log.d("Editing Done", "false");
 
         }
         this.update();
@@ -78,7 +79,6 @@ public class AutoScreen
      */
     public void autoModelEditingDone()
     {
-        Log.d("AUTO", "Model");
         if (autoModel.getText().toString() != "")
         {
             done[2] = true; // TODO add more stuff
@@ -97,10 +97,9 @@ public class AutoScreen
      */
     public void autoYearEditingDone()
     {
-        Log.d("AUTO", "YEAR");
         if (autoYear.getText().toString() != "")
         {
-            done[0] = true; // TODO add more stuff here.
+            done[0] = true;
         }
         else
         {
@@ -116,40 +115,38 @@ public class AutoScreen
      */
     public void autoMPGEditingDone()
     {
-        Log.d("AUTO", "MPG");
 
         if (autoMPG.getText().toString() != "")
         {
-            done[3] = true; // TODO add more stuff here
-            Log.d("output", "true");
+            done[3] = true;
         }
         else
         {
             done[3] = false;
-            Log.d("output", "false");
 
         }
         this.update();
+        auto = new Vehicle(autoYear.getText().toString(), autoMake.getText().toString(), autoModel.getText().toString());
+        mpg = auto.getMPG();
+        autoMPG.setText(String.valueOf(mpg));
     }
 
 
     /**
-     * Are we done editing
+     * Checks the status of the editingDone() fields and sets the autoOkButton
+     * to true if all of the fields have been filled out.
      *
-     * @return do we have sufficient information go get MPG?
      */
-    private boolean update()
+    private void update()
     {
         // done[3] is the mpg. done[0-2] give enough info to get MPG
         if (done[3] || (done[0] && done[1] && done[2]))
         {
             autoOk.setEnabled(true);
-            return true;
         }
         else
         {
             autoOk.setEnabled(false);
-            return false;
         }
     }
 }

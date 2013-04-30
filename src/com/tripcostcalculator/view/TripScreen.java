@@ -1,10 +1,7 @@
 package com.tripcostcalculator.view;
 
-import android.view.View;
-import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
-import android.content.Context;
 import sofia.app.Screen;
 
 // -------------------------------------------------------------------------
@@ -19,10 +16,11 @@ import sofia.app.Screen;
 public class TripScreen
     extends Screen
 {
-    private EditText startLoc;
-    private EditText endLoc;
-    private EditText gasPrice;
-    private Button   tripOkButton;
+    private EditText  startLoc;
+    private EditText  endLoc;
+    private EditText  gasPrice;
+    private Button    tripOkButton;
+    private Integer   autoMPG;
     private boolean[] done;
 
 
@@ -30,14 +28,18 @@ public class TripScreen
     /**
      * We initialize the trip screen (where we go, where we start)
      */
-    public void initialize()
+    public void initialize(int mpg)
     {
-        // again maybe set this to true if it is easier to get it to work
-        tripOkButton.setEnabled(true);
+        // when I pass in a variable through initialize it forces my button to
+        // be active
+        autoMPG = mpg;
+        tripOkButton.setEnabled(false);
         startLoc.setText("");
         endLoc.setText("");
         gasPrice.setText("");
-        done = new boolean[] {false, false, false};
+
+        done = new boolean[] { false, false, false };
+
     }
 
 
@@ -48,7 +50,9 @@ public class TripScreen
     public void tripOkButtonClicked()
     {
         // take us to the map page
-        presentScreen(MapScreen.class);
+        // presentScreen(MapScreen.class);
+        // pass the new variables to the map screen
+        presentScreen(MapScreen.class, autoMPG);
     }
 
 
@@ -57,7 +61,7 @@ public class TripScreen
      */
     public void endLocEditingDone()
     {
-        if(endLoc.getText().toString() != "")
+        if (endLoc.getText().toString() != "")
         {
             done[0] = true;
         }
@@ -66,7 +70,6 @@ public class TripScreen
             done[0] = false;
         }
         this.update();
-        // TODO something with endLoc.
     }
 
 
@@ -75,7 +78,7 @@ public class TripScreen
      */
     public void startLocEditingDone()
     {
-        if(startLoc.getText().toString() != "")
+        if (startLoc.getText().toString() != "")
         {
             done[1] = true;
         }
@@ -83,7 +86,7 @@ public class TripScreen
         {
             done[1] = false;
         }
-        // TODO something with startLoc;
+        this.update();
     }
 
 
@@ -92,7 +95,7 @@ public class TripScreen
      */
     public void gasPriceEditingDone()
     {
-        if(gasPrice.getText().toString() != "")
+        if (gasPrice.getText().toString() != "")
         {
             done[2] = true;
         }
@@ -100,22 +103,23 @@ public class TripScreen
         {
             done[2] = false;
         }
-        Double.parseDouble(this.gasPrice.getText().toString());
-        // TODO something with gas price
+        this.update();
     }
 
-    private boolean update()
+
+    /**
+     * Checks the status of the editingDone() fields and sets the tripOkButton
+     * to true if all of the fields have been filled out.
+     */
+    private void update()
     {
-        // done[3] is the mpg. done[0-2] give enough info to get MPG
         if (done[0] && done[1] && done[2])
         {
             tripOkButton.setEnabled(true);
-            return true;
         }
         else
         {
             tripOkButton.setEnabled(false);
-            return false;
         }
     }
 }
