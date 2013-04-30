@@ -31,7 +31,7 @@ public class VehicleInformationTest extends TestCase
     public void testGetYears()
     {
         ArrayList<String> array = this.vInfo.getYears();
-        //assertEquals("2014", array.get(0));
+        assertEquals("2014", array.get(0));
     }
 
 }

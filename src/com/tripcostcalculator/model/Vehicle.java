@@ -26,7 +26,7 @@ package com.tripcostcalculator.model;
 
 public class Vehicle
 {
-    private double mpg;
+    private Double mpg;
 
     // ----------------------------------------------------------
     /**
@@ -39,6 +39,10 @@ public class Vehicle
     {
         TripHashMap map = new TripHashMap();
         mpg = map.vehicleMap(year + " " + make + " " + model);
+        if (mpg == null)
+        {
+            mpg = 30.0;
+        }
     }
 
     // ----------------------------------------------------------
