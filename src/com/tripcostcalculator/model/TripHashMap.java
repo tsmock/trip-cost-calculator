@@ -4,36 +4,31 @@ import java.util.*;
 
 // -------------------------------------------------------------------------
 /**
- *  We use hash maps for unimplemented/unimplementable functionality
- *  (e.g., turn by turn navigation in Google Maps api)
+ * We use hash maps for unimplemented/unimplementable functionality (e.g., turn
+ * by turn navigation in Google Maps api)
  *
- *  @author Gareth Griffith (gareth00)
- *  @author Taylor Smock (tsmock)
- *  @version Apr 30, 2013
+ * @author Gareth Griffith (gareth00)
+ * @author Taylor Smock (tsmock)
+ * @version Apr 30, 2013
  */
 public class TripHashMap
 {
-//    public static void main(String args[])
-//    {
-//
-//        System.out.println(vehicleMap("2013 honda AcCord"));
-//        System.out.println(addressMap("1755 Ginger Ln Blacksburg VA"));
-//    }
-
     // ----------------------------------------------------------
     /**
      * Create a new TripHashMap object.
      */
     public TripHashMap()
     {
-        //Nothing to implement
+        // Nothing to implement
     }
 
 
     // ----------------------------------------------------------
     /**
      * Vehicle map to get MPG.
-     * @param vehicle The vehicle string to find
+     *
+     * @param vehicle
+     *            The vehicle string to find
      * @return The vehicle's mpg
      */
     public Double vehicleMap(String vehicle)
@@ -55,7 +50,9 @@ public class TripHashMap
     // ----------------------------------------------------------
     /**
      * This is the map for addresses
-     * @param address The address for which we are getting lat-long
+     *
+     * @param address
+     *            The address for which we are getting lat-long
      * @return lat-long for the address
      */
     public String addressMap(String address)
@@ -63,7 +60,10 @@ public class TripHashMap
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("1755 ginger ln blacksburg va", "37.2412,-80.4515");
         map.put("1600 pennsylvania ave washington dc", "38.897096,-77.036545");
-
+        map.put(
+            "1600 amphitheatre pkwy mountain view ca",
+            "37.422816,-122.085091");
+        map.put("1065 la avenida st mountain view ca", "37.41232,-122.07184");
         String address2 = address.toLowerCase();
 
         return map.get(address2);

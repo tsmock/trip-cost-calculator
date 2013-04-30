@@ -30,6 +30,13 @@ public class TripLocation
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Create a new TripLocation object.
+     *
+     * @param start
+     *            The starting address.
+     */
     public TripLocation(String start)
     {
         TripHashMap map = new TripHashMap();
@@ -70,11 +77,13 @@ public class TripLocation
      *
      * @param mpg
      *            The MPG of the vehicle to be used
+     * @param gasPrice
+     *            The price of gas...
      * @return The cost to drive to the location (approximated)
      */
-    public double getDrivingCost(double mpg)
+    public double getDrivingCost(double mpg, double gasPrice)
     {
-        return this.distance * mpg;
+        return this.distance  * gasPrice / mpg;
     }
 
 
