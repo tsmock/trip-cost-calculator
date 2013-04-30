@@ -30,6 +30,11 @@ public class TripLocation
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Create a new TripLocation object.
+     * @param start The starting address.
+     */
     public TripLocation(String start)
     {
         TripHashMap map = new TripHashMap();
