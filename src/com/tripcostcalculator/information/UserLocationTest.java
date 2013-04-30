@@ -1,10 +1,8 @@
 package com.tripcostcalculator.information;
 
-import static org.junit.Assert.*;
+import junit.framework.TestCase;
+import com.tripcostcalculator.view.MainActivity;
 import android.location.LocationManager;
-import com.tripcostcalculator.view.*;
-import org.junit.Before;
-import org.junit.Test;
 
 // -------------------------------------------------------------------------
 /**
@@ -30,7 +28,7 @@ import org.junit.Test;
  *  <http://www.gnu.org/licenses/>.
  */
 
-public class UserLocationTest
+public class UserLocationTest extends TestCase
 {
     /**
      * This is needed for testing -- can't get some information otherwise
@@ -42,7 +40,6 @@ public class UserLocationTest
      *
      * @throws java.lang.Exception
      */
-    @Before
     public void setUp()
         throws Exception
     {
@@ -54,7 +51,7 @@ public class UserLocationTest
      * {@link com.tripcostcalculator.information.UserLocation#getLocationProvider()}
      * .
      */
-    @Test
+
     public void testGetLocationProvider()
     {
         //Don't know what provider I'm going to get //TODO Find a way to test
@@ -68,7 +65,7 @@ public class UserLocationTest
      * {@link com.tripcostcalculator.information.UserLocation#setLocationProvider(java.lang.String)}
      * .
      */
-    @Test
+
     public void testSetLocationProvider()
     {
         main.loc.setLocationProvider(LocationManager.GPS_PROVIDER);
@@ -84,7 +81,6 @@ public class UserLocationTest
      * Test method for
      * {@link com.tripcostcalculator.information.UserLocation#updateLoc()}.
      */
-    @Test
     public void testUpdateLoc()
     {
         fail("Not yet implemented"); // TODO
@@ -95,7 +91,6 @@ public class UserLocationTest
      * Test method for
      * {@link com.tripcostcalculator.information.UserLocation#getLastLoc()}.
      */
-    @Test
     public void testGetLastLoc()
     {
         fail("Not yet implemented"); // TODO
@@ -107,7 +102,6 @@ public class UserLocationTest
      * {@link com.tripcostcalculator.information.UserLocation#setLastLoc(android.location.Location)}
      * .
      */
-    @Test
     public void testSetLastLoc()
     {
         fail("Not yet implemented"); // TODO

@@ -1,9 +1,7 @@
 package com.tripcostcalculator.information;
 
-import static org.junit.Assert.*;
+import junit.framework.TestCase;
 import java.io.File;
-import org.junit.Before;
-import org.junit.Test;
 
 // -------------------------------------------------------------------------
 /**
@@ -29,7 +27,7 @@ import org.junit.Test;
  *  <http://www.gnu.org/licenses/>.
  */
 
-public class WebsiteInformationTest
+public class WebsiteInformationTest extends TestCase
 {
     private WebsiteInformation url;
 
@@ -40,7 +38,6 @@ public class WebsiteInformationTest
      *
      * @throws java.lang.Exception
      */
-    @Before
     public void setUp()
         throws Exception
     {
@@ -52,7 +49,6 @@ public class WebsiteInformationTest
      * Test method for
      * {@link com.tripcostcalculator.information.WebsiteInformation#saveFile()}.
      */
-    @Test
     public void testSaveFile()
     {
         File f = new File("google");
@@ -68,7 +64,6 @@ public class WebsiteInformationTest
      * {@link com.tripcostcalculator.information.WebsiteInformation#saveFile(java.lang.String)}
      * .
      */
-    @Test
     public void testSaveFileString()
     {
         File f = new File("google2");
@@ -82,7 +77,6 @@ public class WebsiteInformationTest
      * Test method for
      * {@link com.tripcostcalculator.information.WebsiteInformation#removeFile()}
      */
-    @Test
     public void testRemoveFile()
     {
         File f = new File("google");

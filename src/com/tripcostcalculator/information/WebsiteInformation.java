@@ -1,5 +1,6 @@
 package com.tripcostcalculator.information;
 
+import java.io.PrintWriter;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.io.IOException;
@@ -89,16 +90,9 @@ public class WebsiteInformation
             website = new URL(this.websiteURL);
             try
             {
-                //We get the webpage and then save it to disk
-                ReadableByteChannel rbc;
-                // getting page
-                rbc = Channels.newChannel(website.openStream());
-                //saving page
-                FileOutputStream fos = new FileOutputStream(filename1);
-                fos.getChannel().transferFrom(rbc, 0, 1 << 24);
-                //freeing memory
-                fos.close();
-                rbc.close();
+                PrintWriter out = new PrintWriter(this.filename);
+                out.write(website.getFile());
+                out.close();
             }
             catch (IOException e) //TODO test
             {
