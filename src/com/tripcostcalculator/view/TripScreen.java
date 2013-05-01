@@ -1,5 +1,7 @@
 package com.tripcostcalculator.view;
 
+import com.tripcostcalculator.model.TripLocation;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import sofia.app.Screen;
@@ -16,19 +18,25 @@ import sofia.app.Screen;
 public class TripScreen
     extends Screen
 {
-    private EditText  startLoc;
-    private EditText  endLoc;
-    private EditText  gasPrice;
-    private Button    tripOkButton;
-    private Integer   autoMPG;
-    private boolean[] done;
+    private EditText     startLoc;
+    private EditText     endLoc;
+    private EditText     gasPrice;
+    private Button       tripOkButton;
+    private Double       autoMPG;
+    private String       start;
+    private String       end;
+    private String       publicCost;
+    private String       autoCost;
+    private TripLocation trip;
+    private Double       costPerMile = 1.79;
+    private boolean[]    done;
 
 
     // ----------------------------------------------------------
     /**
      * We initialize the trip screen (where we go, where we start)
      */
-    public void initialize(int mpg)
+    public void initialize(Double mpg)
     {
         // when I pass in a variable through initialize it forces my button to
         // be active
@@ -50,9 +58,12 @@ public class TripScreen
     public void tripOkButtonClicked()
     {
         // take us to the map page
-        // presentScreen(MapScreen.class);
+        // Log.d("TRIP TEST", autoCost + " " + publicCost);
+        // Log.d("TESTING", autoMPG.toString());
+        presentScreen(MapScreen.class);
         // pass the new variables to the map screen
-        presentScreen(MapScreen.class, autoMPG);
+        // presentScreen(MapScreen.class, autoMPG, start, end, publicCost,
+        // autoCost);
     }
 
 
@@ -115,6 +126,20 @@ public class TripScreen
     {
         if (done[0] && done[1] && done[2])
         {
+            String tripStart = (startLoc.getText().toString());
+            String tripEnd = (endLoc.getText().toString());
+            Double autoGasPrice = Double.parseDouble(gasPrice.getText().toString());
+
+            trip = new TripLocation(tripStart);
+            trip.setDestination(tripEnd);
+//
+//            //push these to the map screen
+//            autoCost = String.valueOf(trip.getDrivingCost(autoMPG, autoGasPrice));
+//            publicCost =
+//                String.valueOf(trip.getPublicTransportCost(costPerMile));
+//            start = trip.getStartLatLong();
+//            //end = trip.getEndLatLong();
+
             tripOkButton.setEnabled(true);
         }
         else

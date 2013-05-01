@@ -31,49 +31,69 @@ import sofia.app.*;
  */
 
 public class MapScreen
-    extends Activity
+    extends Screen
 {
     static final LatLng BLACKSBURG = new LatLng(37.2294, -80.4142);
     static final LatLng DROID      = new LatLng(37.1297, -80.4192);
     private Location    bburg;
     private GoogleMap   map;
-    private TextView    publicTransit;
-    private TextView    yourVehicle;
+//    private TextView    publicTransit;
+//    private TextView    yourVehicle;
     private TextView    vehicleCost;
     private TextView    publicCost;
-    private UiSettings  uiSettings;
+//    private UiSettings  uiSettings;
+
+
+    public void initialize()
+    {
+        setUpMapIfNeeded();
+        vehicleCost.setText("");
+        publicCost.setText("");
+    }
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
+    protected void onResume()
     {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.mapscreen);
+        super.onResume();
+        setUpMapIfNeeded();
+    }
 
-        publicTransit = (TextView)findViewById(R.id.publicTransit);
-        publicTransit.setText("Public Transit");
-        yourVehicle = (TextView)findViewById(R.id.yourVehicle);
-        yourVehicle.setText("Your Vehicle");
-        vehicleCost = (TextView)findViewById(R.id.vehicleCost);
-        vehicleCost.setText("");
-        publicCost = (TextView)findViewById(R.id.publicCost);
-        publicCost.setText("");
 
-        map =
-            ((MapFragment)getFragmentManager().findFragmentById(R.id.map))
-                .getMap();
-        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     */
+    public void setUpMapIfNeeded()
+    {
+        // Do a null check to confirm that we have not already instantiated the
+        // map.
+        if (map == null)
+        {
+            // Try to obtain the map from the SupportMapFragment.
+            map =
+                ((MapFragment)getFragmentManager().findFragmentById(R.id.map))
+                    .getMap();
+            // Check if we were successful in obtaining the map.
+            if (map != null)
+            {
+                setUpMap();
+            }
+        }
+    }
 
-        uiSettings = map.getUiSettings();
+
+    private void setUpMap()
+    {
         map.isMyLocationEnabled();
         map.getUiSettings().setCompassEnabled(true);
         // uiSettings.setMyLocationButtonEnabled(true);
         map.getUiSettings().setMyLocationButtonEnabled(true);
 
-        Marker hamburg =
+        Marker bburg =
             map.addMarker(new MarkerOptions().position(BLACKSBURG).title(
                 "Hamburg"));
-        Marker kiel =
+        Marker droid =
             map.addMarker(new MarkerOptions()
                 .position(DROID)
                 .title("Droid")
@@ -93,85 +113,6 @@ public class MapScreen
     }
 
 
-// @Override
-// public void onResume()
-// {
-// map =
-// ((MapFragment)getFragmentManager().findFragmentById(R.id.map))
-// .getMap();
-// map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-//
-// uiSettings = map.getUiSettings();
-// map.isMyLocationEnabled();
-// map.getUiSettings().setCompassEnabled(true);
-// //uiSettings.setMyLocationButtonEnabled(true);
-// map.getUiSettings().setMyLocationButtonEnabled(true);
-//
-// Marker hamburg =
-// map.addMarker(new MarkerOptions().position(BLACKSBURG)
-// .title("Hamburg"));
-// Marker kiel =
-// map.addMarker(new MarkerOptions()
-// .position(DROID)
-// .title("Droid")
-// .snippet("Droid is cool")
-// .icon(
-// BitmapDescriptorFactory
-// .fromResource(R.drawable.ic_launcher)));
-//
-// // Move the camera instantly to hamburg with a zoom of 15.
-// map.moveCamera(CameraUpdateFactory.newLatLngZoom(BLACKSBURG, 15));
-//
-// // Zoom in, animating the camera.
-// map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
-//
-// // Polyline line = map.addPolyline(new PolylineOptions()
-// // .add(BLACKSBURG, DROID).width(5).color(0xFF0000));
-//
-// Polyline line = map.addPolyline(new PolylineOptions()
-// .add(BLACKSBURG, DROID).geodesic(true)
-// .width(5)
-// .color(Color.RED));
-// }
-// public void initialize()
-// {
-// map =
-// ((MapFragment)getFragmentManager().findFragmentById(R.id.map))
-// .getMap();
-// map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-//
-// uiSettings = map.getUiSettings();
-// map.isMyLocationEnabled();
-// map.getUiSettings().setCompassEnabled(true);
-// //uiSettings.setMyLocationButtonEnabled(true);
-// map.getUiSettings().setMyLocationButtonEnabled(true);
-//
-// Marker hamburg =
-// map.addMarker(new MarkerOptions().position(BLACKSBURG)
-// .title("Hamburg"));
-// Marker kiel =
-// map.addMarker(new MarkerOptions()
-// .position(DROID)
-// .title("Droid")
-// .snippet("Droid is cool")
-// .icon(
-// BitmapDescriptorFactory
-// .fromResource(R.drawable.ic_launcher)));
-//
-// // Move the camera instantly to hamburg with a zoom of 15.
-// map.moveCamera(CameraUpdateFactory.newLatLngZoom(BLACKSBURG, 15));
-//
-// // Zoom in, animating the camera.
-// map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
-//
-// // Polyline line = map.addPolyline(new PolylineOptions()
-// // .add(BLACKSBURG, DROID).width(5).color(0xFF0000));
-//
-// Polyline line = map.addPolyline(new PolylineOptions()
-// .add(BLACKSBURG, DROID).geodesic(true)
-// .width(5)
-// .color(Color.RED));
-// }
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {

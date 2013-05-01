@@ -45,8 +45,7 @@ public class AutoScreen
      */
     public void autoOkClicked()
     {
-        presentScreen(TripScreen.class, autoMPG.getText().toString());
-        // presentScreen(TripScreen.class);
+        presentScreen(TripScreen.class, mpg);
     }
 
 
