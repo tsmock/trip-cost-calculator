@@ -4,7 +4,7 @@
 package com.tripcostcalculator.model;
 
 /**
- * @author Tyler Leskanic
+ * @author Tyler Leskanic (tyler47)
  * @author Taylor Smock (tsmock)
  * @version April 30, 2013
  */
