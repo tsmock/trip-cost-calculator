@@ -27,7 +27,6 @@ public class WebGetterTest extends TestCase {
 		WebGetter test = new WebGetter(
 				"http://www.fueleconomy.gov/ws/rest/fuelprices", "regular");
 		NodeList testList = test.getGas();
-		System.out.println(testList.getLength());
 		System.out.println(testList.item(0).getTextContent());
 		assertTrue(testList.getLength() > 0);
 	}
