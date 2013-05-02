@@ -3,31 +3,21 @@
  */
 package com.tripcostcalculator.model;
 
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
 /**
  * @author Tyler Leskanic (tyler47)
+ * @author Gareth Griffith (gareth00)
  * @author Taylor Smock (tsmock)
  * @version April 30, 2013
  */
 public class TripLocation
 {
-    private double latitude;
-    private double longitude;
-    private double distance;
-
-
-    /**
-     * Constructor
-     *
-     * @param lat
-     *            Latitude
-     * @param lon
-     *            Longitude
-     */
-    public TripLocation(double lat, double lon)
-    {
-        latitude = lat * (Math.PI / 180);
-        longitude = lon * (Math.PI / 180);
-    }
+    private Double      latitude;
+    private Double      longitude;
+    private Double      distance;
+    private TripHashMap map;
 
 
     // ----------------------------------------------------------
@@ -39,14 +29,15 @@ public class TripLocation
      */
     public TripLocation(String start)
     {
-        TripHashMap map = new TripHashMap();
-        String dest = map.addressMap(start);
-        double lat =
-            Double.parseDouble(dest.substring(0, dest.indexOf(",") - 1));
-        double lon = Double.parseDouble(dest.substring(dest.indexOf("," + 1)));
+        map = new TripHashMap();
+        String startLoc = map.addressMap(start);
+        Scanner sc = new Scanner(startLoc).useDelimiter("\\s*,\\s*");
+        Double startLat = sc.nextDouble();
+        Double startLong = sc.nextDouble();
+
         // duplicated, but must come last, not first.
-        latitude = lat * (Math.PI / 180);
-        longitude = lon * (Math.PI / 180);
+        latitude = startLat * (Math.PI / 180);
+        longitude = startLong * (Math.PI / 180);
     }
 
 
@@ -59,10 +50,10 @@ public class TripLocation
      *            Longitude of comparison location
      * @return the distance as the crow flies between the two points (miles)
      */
-    public double getDistance(double lat1, double lon1)
+    public Double getDistance(double lat1, double lon1)
     {
-        double lat2 = lat1 * (Math.PI / 180);
-        double lon2 = lon1 * (Math.PI / 180);
+        Double lat2 = lat1 * (Math.PI / 180);
+        Double lon2 = lon1 * (Math.PI / 180);
         distance =
             Math.acos(Math.sin(latitude) * Math.sin(lat2) + Math.cos(latitude)
                 * Math.cos(lat2) * Math.cos(lon2 - longitude)) * 6371;
@@ -81,9 +72,14 @@ public class TripLocation
      *            The price of gas...
      * @return The cost to drive to the location (approximated)
      */
-    public double getDrivingCost(double mpg, double gasPrice)
+    public String getDrivingCost(Double mpg, Double gasPrice)
     {
-        return this.distance  * gasPrice / mpg;
+        // TODO what is wrong with distance?????
+        int dist = 50;
+        Double drivingCost = dist * gasPrice / mpg;
+        DecimalFormat df = new DecimalFormat("#.##");
+
+        return String.valueOf("$" + df.format(drivingCost));
     }
 
 
@@ -95,9 +91,13 @@ public class TripLocation
      *            The cost per mile to use public transportation.
      * @return The (average) cost of public transportation for the distance.
      */
-    public double getPublicTransportCost(double costPerMile)
+    public String getPublicTransportCost(Double costPerMile)
     {
-        return this.distance * costPerMile;
+        // TODO fix distance and put it back in the method
+        int dist = 50;
+        Double publicCost = dist * costPerMile;
+        DecimalFormat df = new DecimalFormat("#.##");
+        return String.valueOf("$" + df.format(publicCost));
     }
 
 
@@ -111,19 +111,19 @@ public class TripLocation
      */
     public String setDestination(String destination)
     {
-        TripHashMap map = new TripHashMap();
-        String dest = map.addressMap(destination);
-        double lat =
-            Double.parseDouble(dest.substring(0, dest.indexOf(",") - 1));
-        double lon = Double.parseDouble(dest.substring(dest.indexOf("," + 1)));
-        this.getDistance(lat, lon);
-        return lat + ", " + lon;
+        String endLoc = map.addressMap(destination);
+        Scanner sc = new Scanner(endLoc).useDelimiter("\\s*,\\s*");
+        Double endLat = sc.nextDouble();
+        Double endLong = sc.nextDouble();
+        this.getDistance(endLat, endLong);
+        return endLat + ", " + endLong;
     }
 
 
     // ----------------------------------------------------------
     /**
      * Gets the starting latitude and longitude.
+     *
      * @return The latitude and longitude in the format "lat, long"
      */
     public String getStartLatLong()
