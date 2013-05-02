@@ -1,31 +1,72 @@
-/**
- *
- */
 package com.tripcostcalculator.model;
 
-import student.TestCase;
+import junit.framework.TestCase;
 
+// -------------------------------------------------------------------------
 /**
- * @author Tyler Leskanic
- * @version April 30, 2013
+ *  We test the TripLocation class
  *
+ *  @author Taylor Smock (tsmock)
+ *  @version May 2, 2013
  */
-public class TripLocationTest extends TestCase
+
+public class TripLocationTest
+    extends TestCase
 {
+    private TripLocation trip;
+
+    // ----------------------------------------------------------
+    protected void setUp()
+        throws Exception
+    {
+        super.setUp();
+        trip = new TripLocation("here");
+        trip.setDestination("there");
+    }
+
+
     /**
-     * Set up does nothing
+     * Test method for {@link com.tripcostcalculator.model.TripLocation#getDistance(double, double)}.
      */
-	public void setUp()
-	{
-		//do nothing
-	}
-	// ----------------------------------------------------------
-	/**
-	 * Testing to see if the distance method works
-	 */
-//	public void testGetDistance()
-//	{
-//		TripLocation test = new TripLocation(42.294199, -71.302707);
-//		assertEquals(test.getDistance(42.294548, -71.308458), 0.29493, 0.01);
-//	}
+    public void testGetDistance()
+    {
+        trip.getDistance();
+    }
+
+
+    /**
+     * Test method for {@link com.tripcostcalculator.model.TripLocation#getDrivingCost(java.lang.Double, java.lang.Double)}.
+     */
+    public void testGetDrivingCost()
+    {
+        fail("Not yet implemented"); // TODO
+    }
+
+
+    /**
+     * Test method for {@link com.tripcostcalculator.model.TripLocation#getPublicTransportCost(java.lang.Double)}.
+     */
+    public void testGetPublicTransportCost()
+    {
+        fail("Not yet implemented"); // TODO
+    }
+
+
+    /**
+     * Test method for {@link com.tripcostcalculator.model.TripLocation#setDestination(java.lang.String)}.
+     */
+    public void testSetDestination()
+    {
+        fail("Not yet implemented"); // TODO
+    }
+
+
+    /**
+     * Test method for {@link com.tripcostcalculator.model.TripLocation#getStartLatLong()}.
+     */
+    public void testGetStartLatLong()
+    {
+        fail("Not yet implemented"); // TODO
+    }
+
 }
