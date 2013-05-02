@@ -3,13 +3,14 @@
  */
 package com.tripcostcalculator.model;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.text.DecimalFormat;
 import java.util.Scanner;
+<<<<<<< master
 import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+=======
+>>>>>>> ca2cdf1 added a method to get Gas; removed gas param for drivingCost
 
 /**
  * @author Tyler Leskanic (tyler47)
@@ -22,9 +23,12 @@ public class TripLocation
     private Double      latitude;
     private Double      longitude;
     private Double      distance;
+<<<<<<< master
     private Double      latitudeDest;
     private Double      longitudeDest;
     private Double      gasPrice;
+=======
+>>>>>>> ca2cdf1 added a method to get Gas; removed gas param for drivingCost
     private TripHashMap map;
 
 
@@ -34,6 +38,7 @@ public class TripLocation
      *
      * @param start
      *            The starting address.
+<<<<<<< master
      * @throws IOException
      * @throws SAXException
      * @throws ParserConfigurationException
@@ -44,6 +49,10 @@ public class TripLocation
         ParserConfigurationException,
         SAXException,
         IOException
+=======
+     */
+    public TripLocation(String start)
+>>>>>>> ca2cdf1 added a method to get Gas; removed gas param for drivingCost
     {
         map = new TripHashMap();
         String startLoc = map.addressMap(start);
@@ -54,7 +63,10 @@ public class TripLocation
         // duplicated, but must come last, not first.
         latitude = startLat * (Math.PI / 180);
         longitude = startLong * (Math.PI / 180);
+<<<<<<< master
         gasPrice = getGasPrice();
+=======
+>>>>>>> ca2cdf1 added a method to get Gas; removed gas param for drivingCost
     }
 
 
@@ -79,6 +91,7 @@ public class TripLocation
     }
 
 
+<<<<<<< master
     /**
      * @return the distance as the crow files between the two points (miles)
      */
@@ -86,8 +99,32 @@ public class TripLocation
     {
         return this.getDistance(this.latitudeDest, this.longitudeDest);
     }
+=======
+    // ----------------------------------------------------------
+    /**
+     * We calculate the cost to drive somewhere.
+     *
+     * @param mpg
+     *            The MPG of the vehicle to be used
+     * @param gasPrice
+     *            The price of gas...
+     * @return The cost to drive to the location (approximated)
+     */
+    public String getDrivingCost(Double mpg, Double gasPrice)
+    {
+        // TODO what is wrong with distance?????
+        int dist = 50;
+        Double drivingCost = dist * gasPrice / mpg;
+        DecimalFormat df = new DecimalFormat("#.##");
+>>>>>>> ca2cdf1 added a method to get Gas; removed gas param for drivingCost
 
+<<<<<<< master
+=======
+        return String.valueOf("$" + df.format(drivingCost));
+    }
+>>>>>>> ca2cdf1 added a method to get Gas; removed gas param for drivingCost
 
+<<<<<<< master
     // ----------------------------------------------------------
     /**
      * We calculate the cost to drive somewhere.
@@ -186,6 +223,41 @@ public class TripLocation
         Double endLong = sc.nextDouble();
         this.latitudeDest = endLat;
         this.longitudeDest = endLong;
+=======
+
+    // ----------------------------------------------------------
+    /**
+     * Returns the cost for public transportation
+     *
+     * @param costPerMile
+     *            The cost per mile to use public transportation.
+     * @return The (average) cost of public transportation for the distance.
+     */
+    public String getPublicTransportCost(Double costPerMile)
+    {
+        // TODO fix distance and put it back in the method
+        int dist = 50;
+        Double publicCost = dist * costPerMile;
+        DecimalFormat df = new DecimalFormat("#.##");
+        return String.valueOf("$" + df.format(publicCost));
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * We set the distance based off of a string destination
+     *
+     * @param destination
+     *            A string of the destination.
+     * @return The lat-long of the destination
+     */
+    public String setDestination(String destination)
+    {
+        String endLoc = map.addressMap(destination);
+        Scanner sc = new Scanner(endLoc).useDelimiter("\\s*,\\s*");
+        Double endLat = sc.nextDouble();
+        Double endLong = sc.nextDouble();
+>>>>>>> ca2cdf1 added a method to get Gas; removed gas param for drivingCost
         this.getDistance(endLat, endLong);
         return endLat + ", " + endLong;
     }
