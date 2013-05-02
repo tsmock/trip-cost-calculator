@@ -45,6 +45,7 @@ public class AutoScreen
      */
     public void autoOkClicked()
     {
+        Log.d("AUTO OK", String.valueOf(mpg));
         presentScreen(TripScreen.class, mpg);
     }
 
@@ -120,6 +121,7 @@ public class AutoScreen
             done[3] = false;
 
         }
+
         this.update();
 
     }
@@ -135,13 +137,15 @@ public class AutoScreen
         if (done[0] && done[1] && done[2])
         {
             auto =
-                new Vehicle(autoMake.getText().toString(), autoModel.getText().toString(), autoYear.getText().toString());
+                new Vehicle(autoMake.getText().toString(), autoModel.getText()
+                    .toString(), autoYear.getText().toString());
             mpg = auto.getMPG();
             autoMPG.setText(String.valueOf(mpg));
             autoOk.setEnabled(true);
         }
-        else if(done[3])
+        else if (done[3])
         {
+            mpg = Double.parseDouble(autoMPG.getText().toString());
             autoOk.setEnabled(true);
         }
         else
@@ -150,3 +154,6 @@ public class AutoScreen
         }
     }
 }
+
+// use afterTextChanges() in textWatcher to update the edit text boxes in the
+// screens

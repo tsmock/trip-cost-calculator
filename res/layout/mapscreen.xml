@@ -45,7 +45,7 @@
         android:textColor="@color/White" />
 
     <TextView
-        android:id="@+id/vehicleCost"
+        android:id="@+id/vehicleTransCost"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
@@ -58,7 +58,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/publicCost"
+        android:id="@+id/publicTransCost"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"

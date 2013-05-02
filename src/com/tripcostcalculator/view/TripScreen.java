@@ -38,8 +38,7 @@ public class TripScreen
      */
     public void initialize(Double mpg)
     {
-        // when I pass in a variable through initialize it forces my button to
-        // be active
+
         autoMPG = mpg;
         tripOkButton.setEnabled(false);
         startLoc.setText("");
@@ -60,10 +59,12 @@ public class TripScreen
         // take us to the map page
         // Log.d("TRIP TEST", autoCost + " " + publicCost);
         // Log.d("TESTING", autoMPG.toString());
-        presentScreen(MapScreen.class);
-        // pass the new variables to the map screen
-        // presentScreen(MapScreen.class, autoMPG, start, end, publicCost,
-        // autoCost);
+        Log.d("TRIP OK", gasPrice.getText().toString() + " "
+            + startLoc.getText().toString() + " " + endLoc.getText().toString());
+        Log.d("TRIP OK", autoCost + " " + publicCost + " " + start + " " + end);
+
+        presentScreen(MapScreen.class, autoCost, publicCost, start, end);
+
     }
 
 
@@ -128,17 +129,15 @@ public class TripScreen
         {
             String tripStart = (startLoc.getText().toString());
             String tripEnd = (endLoc.getText().toString());
-            Double autoGasPrice = Double.parseDouble(gasPrice.getText().toString());
+            Double autoGasPrice =
+                Double.parseDouble(gasPrice.getText().toString());
 
             trip = new TripLocation(tripStart);
-            trip.setDestination(tripEnd);
-//
-//            //push these to the map screen
-//            autoCost = String.valueOf(trip.getDrivingCost(autoMPG, autoGasPrice));
-//            publicCost =
-//                String.valueOf(trip.getPublicTransportCost(costPerMile));
-//            start = trip.getStartLatLong();
-//            //end = trip.getEndLatLong();
+            // push these to the map screen
+            autoCost = trip.getDrivingCost(autoMPG, autoGasPrice);
+            publicCost = trip.getPublicTransportCost(costPerMile);
+            start = trip.getStartLatLong();
+            end = trip.setDestination(tripEnd);
 
             tripOkButton.setEnabled(true);
         }

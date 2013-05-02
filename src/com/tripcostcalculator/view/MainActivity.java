@@ -85,7 +85,8 @@ public class MainActivity
     public void calcTripClicked()
     {
         // go to the calc trip page
-        presentScreen(TripScreen.class);
+        Double autoMPG = 0.0;
+        presentScreen(TripScreen.class, autoMPG);
     }
 
 }

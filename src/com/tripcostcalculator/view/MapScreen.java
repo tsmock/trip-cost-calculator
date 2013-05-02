@@ -1,5 +1,9 @@
 package com.tripcostcalculator.view;
 
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import android.util.Log;
 import android.location.Location;
 import android.graphics.Color;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -33,22 +37,71 @@ import sofia.app.*;
 public class MapScreen
     extends Screen
 {
-    static final LatLng BLACKSBURG = new LatLng(37.2294, -80.4142);
-    static final LatLng DROID      = new LatLng(37.1297, -80.4192);
-    private Location    bburg;
-    private GoogleMap   map;
-//    private TextView    publicTransit;
-//    private TextView    yourVehicle;
-    private TextView    vehicleCost;
-    private TextView    publicCost;
-//    private UiSettings  uiSettings;
+// static LatLng START = new LatLng(37.2294, -80.4192);
+// static LatLng END = new LatLng(37.1297, -80.4192);
+    static LatLng     START;
+    static LatLng     END;
+    private GoogleMap map;
+
+    private TextView  vehicleTransCost;
+    private TextView  publicTransCost;
+
+    private String    startParse;
+    private String    endParse;
+    private Double    startLat;
+    private Double    startLong;
+    private Double    endLat;
+    private Double    endLong;
 
 
-    public void initialize()
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     *
+     * @param autoCost
+     * @param publicCost
+     * @param start
+     * @param end
+     */
+    public void initialize(
+        String autoCost,
+        String publicCost,
+        String start,
+        String end)
     {
+        startParse = start;
+        endParse = end;
+        parseStart();
+        parseEnd();
+        START = new LatLng(startLat, startLong);
+        END = new LatLng(endLat, endLong);
+
+        vehicleTransCost.setText(autoCost);
+        publicTransCost.setText(publicCost);
+
         setUpMapIfNeeded();
-        vehicleCost.setText("");
-        publicCost.setText("");
+    }
+
+
+    public void parseStart()
+    {
+        Scanner sc = new Scanner(startParse).useDelimiter("\\s*,\\s*");
+        startLat = sc.nextDouble();
+        startLong = sc.nextDouble();
+        Log.d(
+            "START LAT LONG",
+            String.valueOf(startLat) + " " + String.valueOf(startLong));
+    }
+
+
+    public void parseEnd()
+    {
+        Scanner sc = new Scanner(endParse).useDelimiter("\\s*,\\s*");
+        endLat = sc.nextDouble();
+        endLong = sc.nextDouble();
+        Log.d(
+            "END LAT LONG",
+            String.valueOf(endLat) + " " + String.valueOf(endLong));
     }
 
 
@@ -85,30 +138,18 @@ public class MapScreen
 
     private void setUpMap()
     {
-        map.isMyLocationEnabled();
-        map.getUiSettings().setCompassEnabled(true);
-        // uiSettings.setMyLocationButtonEnabled(true);
-        map.getUiSettings().setMyLocationButtonEnabled(true);
+        Marker start =
+            map.addMarker(new MarkerOptions().position(START).title("Start"));
+        Marker end =
+            map.addMarker(new MarkerOptions().position(END)
+                .title("Destination").draggable(true));
 
-        Marker bburg =
-            map.addMarker(new MarkerOptions().position(BLACKSBURG).title(
-                "Hamburg"));
-        Marker droid =
-            map.addMarker(new MarkerOptions()
-                .position(DROID)
-                .title("Droid")
-                .snippet("Droid is cool")
-                .icon(
-                    BitmapDescriptorFactory
-                        .fromResource(R.drawable.ic_launcher)));
-
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(BLACKSBURG, 15));
-
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(START, 15));
         // Zoom in, animating the camera.
         map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
 
         Polyline line =
-            map.addPolyline(new PolylineOptions().add(BLACKSBURG, DROID)
+            map.addPolyline(new PolylineOptions().add(START, END)
                 .geodesic(true).width(5).color(Color.RED));
     }
 
