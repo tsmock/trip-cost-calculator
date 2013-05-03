@@ -21,8 +21,8 @@ public class TripLocation
     private Double      longitude;
     private Double      distance;
     private TripHashMap map;
-    private Double latitudeDest;
-    private Double longitudeDest;
+    private Double      latitudeDest;
+    private Double      longitudeDest;
 
 
     // ----------------------------------------------------------
@@ -39,8 +39,8 @@ public class TripLocation
         Scanner sc = new Scanner(startLoc).useDelimiter("\\s*,\\s*");
         Double startLat = sc.nextDouble();
         Double startLong = sc.nextDouble();
-        latitude = startLat * (Math.PI / 180);
-        longitude = startLong * (Math.PI / 180);
+        latitude = startLat;
+        longitude = startLong;
     }
 
 
@@ -51,17 +51,19 @@ public class TripLocation
      *            Latitude of comparison location
      * @param lon1
      *            Longitude of comparison location
-     * @return the distance as the crow flies between the two points (miles)
      */
     public void setDistance(Double lat1, Double lon1)
     {
         Double lat2 = lat1 * (Math.PI / 180);
         Double lon2 = lon1 * (Math.PI / 180);
         Double dist =
-            Math.acos(Math.sin(latitude) * Math.sin(lat2) + Math.cos(latitude)
-                * Math.cos(lat2) * Math.cos(lon2 - longitude)) * 6371;
+            Math.acos(Math.sin(latitude * Math.PI / 180) * Math.sin(lat2) +
+                Math.cos(latitude * Math.PI / 180)
+                * Math.cos(lat2) * Math.cos(lon2 - longitude * Math.PI / 180))
+                * 6371;
         distance = dist / 1.609344; // to miles
     }
+
 
     // ----------------------------------------------------------
     /**
@@ -90,14 +92,13 @@ public class TripLocation
      *
      * @param mpg
      *            The MPG of the vehicle to be used
-     * @param gasPrice
-     *            The price of gas...
      * @return The cost to drive to the location (approximated)
      */
     public String getDrivingCost(Double mpg)
     {
         return this.getDrivingCost(mpg, this.getGasPrice());
     }
+
 
     /**
      * We calculate the cost to drive somewhere.
