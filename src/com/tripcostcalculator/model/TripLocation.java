@@ -8,6 +8,8 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /**
+ * This class does stuff to calculate trip costs...
+ *
  * @author Tyler Leskanic (tyler47)
  * @author Gareth Griffith (gareth00)
  * @author Taylor Smock (tsmock)
