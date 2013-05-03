@@ -39,9 +39,22 @@ public class TripLocationTest extends TestCase
 	 */
 	public void testGetDrivingCost()
 	{
+	    assertEquals("$0.00", trip.getDrivingCost(0.0, 0.0));
+	    assertEquals("$0.00", trip.getDrivingCost(30.0, 0.0));
 	    trip.setDestination("there");
 	    assertEquals("$7.27", trip.getDrivingCost(30.0, 1.0));
+	    assertEquals("$0.00", trip.getDrivingCost(30.0, 0.0));
 	}
+
+	// ----------------------------------------------------------
+    /**
+     * We test getting the cost of "driving".
+     */
+    public void testGetDrivingCostWithoutGas()
+    {
+        trip.setDestination("there");
+        assertEquals("$7.27", trip.getDrivingCost(30.0));
+    }
 
 
 	// ----------------------------------------------------------
@@ -50,7 +63,24 @@ public class TripLocationTest extends TestCase
 	 */
 	public void testGetPublicTransportationCost()
 	{
+	    assertEquals("$390.47", trip.getPublicTransportCost(1.79));
 	    trip.setDestination("there");
+	    assertEquals("$390.47", trip.getPublicTransportCost(1.79));
 
 	}
+
+	// ----------------------------------------------------------
+	/**
+	 * Place a description of your method here.
+	 */
+	public void testSetDistatnce()
+	{
+	    trip.setDestination("there");
+	    trip.setDistance();
+	    assertEquals(218.13, trip.getDistance(), 0.01);
+	}
+
+
+
+
 }

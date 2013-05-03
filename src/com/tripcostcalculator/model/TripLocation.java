@@ -152,6 +152,7 @@ public class TripLocation
      */
     public String getPublicTransportCost(Double costPerMile)
     {
+
         if (distance == null)
         {
             distance = 0.0;
