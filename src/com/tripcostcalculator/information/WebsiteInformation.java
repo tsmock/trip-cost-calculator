@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.File;
 import java.net.MalformedURLException;
-import java.io.IOException;
 import java.net.URL;
 
 // -------------------------------------------------------------------------
