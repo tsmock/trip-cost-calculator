@@ -82,9 +82,9 @@ public class MapScreen
      */
     public void parseStart()
     {
-        Scanner sc = new Scanner(startParse).useDelimiter("\\s*,\\s*");
-        startLat = sc.nextDouble();
-        startLong = sc.nextDouble();
+        Double[] d = this.parseLatitudeLongitude(startParse);
+        startLat = d[0];
+        startLong = d[1];
         Log.d(
             "START LAT LONG",
             String.valueOf(startLat) + " " + String.valueOf(startLong));
@@ -97,9 +97,9 @@ public class MapScreen
      */
     public void parseEnd()
     {
-        Scanner sc = new Scanner(endParse).useDelimiter("\\s*,\\s*");
-        endLat = sc.nextDouble(); //TODO use the parseLatitudeLongitude method
-        endLong = sc.nextDouble();
+        Double[] d = this.parseLatitudeLongitude(endParse);
+        endLat = d[0];
+        endLong = d[1];
         Log.d(
             "END LAT LONG",
             String.valueOf(endLat) + " " + String.valueOf(endLong));
