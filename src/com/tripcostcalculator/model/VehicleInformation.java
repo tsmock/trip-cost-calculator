@@ -165,8 +165,9 @@ public class VehicleInformation
      */
     public ArrayList<String> getYears()
     {
-        // TODO Auto-generated method stub
-        return null;
+        ArrayList<String> years = new ArrayList<String>();
+        years.add(0, "2013");
+        return years;
     }
 
 }

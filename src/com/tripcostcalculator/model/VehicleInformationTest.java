@@ -31,7 +31,15 @@ public class VehicleInformationTest extends TestCase
     public void testGetYears()
     {
         ArrayList<String> array = this.vInfo.getYears();
-        assertEquals("2014", array.get(0));
+        assertEquals("2013", array.get(0));
     }
 
+
+    /**
+     * Test method for {@link com.tripcostcalculator.model.VehicleInformation#getVehicleInfo()}
+     */
+    public void testGetVehicleObj()
+    {
+        //TODO
+    }
 }

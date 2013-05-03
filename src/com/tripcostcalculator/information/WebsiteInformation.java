@@ -70,7 +70,6 @@ public class WebsiteInformation
     {
         try
         {
-            File f = new File(this.filename);
             URL website;
             website = new URL(this.websiteURL);
             PrintWriter out = new PrintWriter(this.filename);
