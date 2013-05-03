@@ -44,6 +44,10 @@ public class TripLocationTest extends TestCase
 	}
 
 
+	// ----------------------------------------------------------
+	/**
+	 * We test getting the public transportation cost.
+	 */
 	public void testGetPublicTransportationCost()
 	{
 	    trip.setDestination("there");

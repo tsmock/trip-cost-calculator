@@ -3,6 +3,7 @@
  */
 package com.tripcostcalculator.model;
 
+import android.util.Log;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
@@ -17,10 +18,9 @@ public class TripLocation
     private Double      latitude;
     private Double      longitude;
     private Double      distance;
-    private Double      latitudeDest;
-    private Double      longitudeDest;
-    private Double      gasPrice;
     private TripHashMap map;
+    private Double latitudeDest;
+    private Double longitudeDest;
 
 
     // ----------------------------------------------------------
@@ -37,11 +37,8 @@ public class TripLocation
         Scanner sc = new Scanner(startLoc).useDelimiter("\\s*,\\s*");
         Double startLat = sc.nextDouble();
         Double startLong = sc.nextDouble();
-
-        // duplicated, but must come last, not first.
         latitude = startLat * (Math.PI / 180);
         longitude = startLong * (Math.PI / 180);
-        gasPrice = getGasPrice();
     }
 
 
@@ -54,15 +51,23 @@ public class TripLocation
      *            Longitude of comparison location
      * @return the distance as the crow flies between the two points (miles)
      */
-    public Double getDistance(double lat1, double lon1)
+    public void setDistance(Double lat1, Double lon1)
     {
         Double lat2 = lat1 * (Math.PI / 180);
         Double lon2 = lon1 * (Math.PI / 180);
-        distance =
+        Double dist =
             Math.acos(Math.sin(latitude) * Math.sin(lat2) + Math.cos(latitude)
                 * Math.cos(lat2) * Math.cos(lon2 - longitude)) * 6371;
-        distance = distance / 1.609344; // to miles
-        return distance;
+        distance = dist / 1.609344; // to miles
+    }
+
+    // ----------------------------------------------------------
+    /**
+     * Set the distance from a previously selected location.
+     */
+    public void setDistance()
+    {
+        this.setDistance(this.latitudeDest, this.longitudeDest);
     }
 
 
@@ -73,7 +78,7 @@ public class TripLocation
      */
     public double getDistance()
     {
-        return this.getDistance(this.latitudeDest, this.longitudeDest);
+        return distance;
     }
 
 
@@ -83,13 +88,14 @@ public class TripLocation
      *
      * @param mpg
      *            The MPG of the vehicle to be used
+     * @param gasPrice
+     *            The price of gas...
      * @return The cost to drive to the location (approximated)
      */
     public String getDrivingCost(Double mpg)
     {
         return this.getDrivingCost(mpg, this.getGasPrice());
     }
-
 
     /**
      * We calculate the cost to drive somewhere.
@@ -155,8 +161,6 @@ public class TripLocation
 
 
     // ----------------------------------------------------------
-
-    // ----------------------------------------------------------
     /**
      * We set the distance based off of a string destination
      *
@@ -170,9 +174,7 @@ public class TripLocation
         Scanner sc = new Scanner(endLoc).useDelimiter("\\s*,\\s*");
         Double endLat = sc.nextDouble();
         Double endLong = sc.nextDouble();
-        this.latitudeDest = endLat;
-        this.longitudeDest = endLong;
-        this.getDistance(endLat, endLong);
+        this.setDistance(endLat, endLong);
         return endLat + ", " + endLong;
     }
 

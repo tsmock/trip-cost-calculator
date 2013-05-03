@@ -134,10 +134,15 @@ public class TripScreen
 
             trip = new TripLocation(tripStart);
             // push these to the map screen
-            autoCost = trip.getDrivingCost(autoMPG, autoGasPrice);
-            publicCost = trip.getPublicTransportCost(costPerMile);
+
+
+
             start = trip.getStartLatLong();
             end = trip.setDestination(tripEnd);
+            autoCost = trip.getDrivingCost(autoMPG, autoGasPrice);
+            publicCost = trip.getPublicTransportCost(costPerMile);
+            Log.d("START", start.toString());
+            Log.d("END", end.toString());
 
             tripOkButton.setEnabled(true);
         }
