@@ -1,62 +1,57 @@
 package com.tripcostcalculator.view;
 
+import android.widget.Button;
 import junit.framework.TestCase;
 
 // -------------------------------------------------------------------------
 /**
- *  Write a one-sentence summary of your class here.
- *  Follow it with additional details about its purpose, what abstraction
- *  it represents, and how to use it.
- * 
- *  @author vorpalblade
- *  @version May 3, 2013
+ * Tests all of the screen items that are on the MainActivity screen.
+ *
+ * @author Gareth Griffith (gareth00)
+ * @version May 3, 2013
  */
 
 public class MainActivityTest
-    extends TestCase
+    extends student.AndroidTestCase<MainActivity>
 {
+    private Button defineCar;
+    private Button calcTrip;
+
 
     // ----------------------------------------------------------
-    protected void setUp()
-        throws Exception
-    {
-        super.setUp();
-    }
-
-
     /**
-     * Test method for {@link com.tripcostcalculator.view.MainActivity#setUpUserLocation()}.
+     * Create a new MainActivityTest object.
      */
-    public void testSetUpUserLocation()
+    public MainActivityTest()
     {
-        fail("Not yet implemented"); // TODO
+        super(MainActivity.class);
+    }
+
+
+    // ----------------------------------------------------------
+    public void setUp()
+    {
+        // nothing set up.
     }
 
 
     /**
-     * Test method for {@link com.tripcostcalculator.view.MainActivity#updateUserLocation()}.
-     */
-    public void testUpdateUserLocation()
-    {
-        fail("Not yet implemented"); // TODO
-    }
-
-
-    /**
-     * Test method for {@link com.tripcostcalculator.view.MainActivity#defineCarClicked()}.
+     * Test method for
+     * {@link com.tripcostcalculator.view.MainActivity#defineCarClicked()}.
      */
     public void testDefineCarClicked()
     {
-        fail("Not yet implemented"); // TODO
+        click(defineCar);
     }
 
 
     /**
-     * Test method for {@link com.tripcostcalculator.view.MainActivity#calcTripClicked()}.
+     * Test method for
+     * {@link com.tripcostcalculator.view.MainActivity#calcTripClicked()}.
      */
     public void testCalcTripClicked()
     {
-        fail("Not yet implemented"); // TODO
+        click(calcTrip);
     }
 
 }
