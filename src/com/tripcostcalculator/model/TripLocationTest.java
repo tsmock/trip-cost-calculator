@@ -46,6 +46,7 @@ public class TripLocationTest extends TestCase
 	    assertEquals("$0.00", trip.getDrivingCost(30.0, 0.0));
 	}
 
+
 	// ----------------------------------------------------------
     /**
      * We test getting the cost of "driving".
