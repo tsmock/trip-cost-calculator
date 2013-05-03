@@ -67,15 +67,19 @@ public class TripLocation
 
 
     /**
+     * Call setDestination(String destination) first
+     *
      * @return the distance as the crow files between the two points (miles)
      */
     public double getDistance()
     {
         return this.getDistance(this.latitudeDest, this.longitudeDest);
     }
+
+
     // ----------------------------------------------------------
     /**
-     * We calculate the cost to drive somewhere.
+     * We calculate the cost to drive somewhere. TODO do we remove this?
      *
      * @param mpg
      *            The MPG of the vehicle to be used
@@ -83,12 +87,33 @@ public class TripLocation
      */
     public String getDrivingCost(Double mpg)
     {
-        // TODO what is wrong with distance?????
-        int dist = 50;
-        Double drivingCost = dist * gasPrice / mpg;
-        DecimalFormat df = new DecimalFormat("#.##");
+        return this.getDrivingCost(mpg, this.getGasPrice());
+    }
 
-        return String.valueOf("$" + df.format(drivingCost));
+
+    /**
+     * We calculate the cost to drive somewhere.
+     *
+     * @param mpg
+     *            The MPG of the vehicle to be used
+     * @param gasPrice1
+     *            The price of gas...
+     * @return The cost to drive to the location (approximated)
+     */
+    public String getDrivingCost(Double mpg, Double gasPrice1)
+    {
+
+        if (mpg - 0.0 < 0.01 || distance == null)
+        {
+            return "$0.00";
+        }
+        else
+        {
+            Double drivingCost = distance * gasPrice1 / mpg;
+            DecimalFormat df = new DecimalFormat("#.##");
+
+            return String.valueOf("$" + df.format(drivingCost));
+        }
     }
 
 
@@ -99,12 +124,12 @@ public class TripLocation
      */
     public double getGasPrice()
     {
-        /*WebGetter test =
-            new WebGetter(
-                "http://www.fueleconomy.gov/ws/rest/fuelprices",
-                "regular");
-        NodeList testList = test.getGas();
-        return Double.parseDouble(testList.item(0).getTextContent());*/
+        /*
+         * WebGetter test = new WebGetter(
+         * "http://www.fueleconomy.gov/ws/rest/fuelprices", "regular"); NodeList
+         * testList = test.getGas(); return
+         * Double.parseDouble(testList.item(0).getTextContent());
+         */
         return 3.74;
     }
 
@@ -119,34 +144,17 @@ public class TripLocation
      */
     public String getPublicTransportCost(Double costPerMile)
     {
-        // TODO fix distance and put it back in the method
-        int dist = 50;
-        Double publicCost = dist * costPerMile;
+        if (distance == null)
+        {
+            distance = 0.0;
+        }
+        Double publicCost = distance * costPerMile;
         DecimalFormat df = new DecimalFormat("#.##");
         return String.valueOf("$" + df.format(publicCost));
     }
 
 
     // ----------------------------------------------------------
-    /**
-     * We calculate the cost to drive somewhere.
-     *
-     * @param mpg
-     *            The MPG of the vehicle to be used
-     * @param gasPrice1
-     *            The price of gas...
-     * @return The cost to drive to the location (approximated)
-     */
-    public String getDrivingCost(Double mpg, Double gasPrice1)
-    {
-        // TODO what is wrong with distance?????
-        int dist = 50;
-        Double drivingCost = dist * gasPrice1 / mpg;
-        DecimalFormat df = new DecimalFormat("#.##");
-
-        return String.valueOf("$" + df.format(drivingCost));
-    }
-
 
     // ----------------------------------------------------------
     /**
@@ -168,6 +176,7 @@ public class TripLocation
         return endLat + ", " + endLong;
     }
 
+
     // ----------------------------------------------------------
     /**
      * Gets the starting latitude and longitude.
@@ -176,6 +185,6 @@ public class TripLocation
      */
     public String getStartLatLong()
     {
-        return this.latitude + ", " + this.longitude;
+        return this.latitude + "," + this.longitude;
     }
 }
