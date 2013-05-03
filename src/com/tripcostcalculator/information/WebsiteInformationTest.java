@@ -1,5 +1,6 @@
 package com.tripcostcalculator.information;
 
+import java.io.IOException;
 import junit.framework.TestCase;
 import java.io.File;
 
@@ -52,10 +53,11 @@ public class WebsiteInformationTest extends TestCase
     public void testSaveFile()
     {
         File f = new File("google");
-        assertFalse(f.exists());
+        f.delete();
         url.saveFile();
         assertTrue(f.exists());
-        f.delete();
+        url.removeFile();
+        assertFalse(f.exists());
     }
 
 
@@ -64,27 +66,54 @@ public class WebsiteInformationTest extends TestCase
      * {@link com.tripcostcalculator.information.WebsiteInformation#saveFile(java.lang.String)}
      * .
      */
-    public void testSaveFileString()
+    public void testSaveFileStringExceptions()
     {
-        File f = new File("google2");
-        assertFalse(f.exists());
-        url.saveFile("google2");
-        assertTrue(f.exists());
+        File f = new File("google");
         f.delete();
+        url = new WebsiteInformation("", "nothing");
+        url.saveFile("something");
+        url = new WebsiteInformation("https://www.google.com", "google");
+        f.mkdir();
+        url.saveFile();
+        f.delete();
+        assertFalse(f.exists());
+
+
     }
 
     /**
      * Test method for
      * {@link com.tripcostcalculator.information.WebsiteInformation#removeFile()}
+     * @throws IOException Should not occur -- carefully chosen...
      */
-    public void testRemoveFile()
+    public void testRemoveFile() throws IOException
     {
         File f = new File("google");
+        f.delete();
         assertFalse(f.exists());
+        url.removeFile();
         url.saveFile();
         assertTrue(f.exists());
         url.removeFile();
         assertFalse(f.exists());
+        //Testing with directories
+        f = new File("google");
+        f.mkdir();
+        File f2 = new File("google/1");
+        f2.createNewFile();
+        assertFalse(url.removeFile());
+        assertTrue(f2.delete());
+        assertTrue(f.delete());
+    }
+
+
+    /**
+     * Test method for
+     * {@link com.tripcostcalculator.information.WebsiteInformation#getWebsiteURL()}
+     */
+    public void testGetWebsiteURL()
+    {
+        assertEquals("https://www.google.com", url.getWebsiteURL());
     }
 
 }

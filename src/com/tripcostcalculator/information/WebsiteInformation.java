@@ -1,5 +1,6 @@
 package com.tripcostcalculator.information;
 
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -67,41 +68,25 @@ public class WebsiteInformation
      */
     public void saveFile(String filename1)
     {
-        File f = new File(this.filename);
-        if (f.exists())
-        {
-            if (!this.removeFile()) //TODO test
-            {
-                System.out.println("The file, " + this.filename +
-                    " was not deleted. Returning.");
-                return;
-            }
-            else
-            {
-                this.filename = filename1;
-            }
-        }
-        URL website;
         try
         {
+            File f = new File(this.filename);
+            URL website;
             website = new URL(this.websiteURL);
-            try
-            {
-                PrintWriter out = new PrintWriter(this.filename);
-                out.write(website.getFile());
-                out.close();
-            }
-            catch (IOException e) //TODO test
-            {
-                System.out.println("Bad web page");
-                e.printStackTrace();
-            }
+            PrintWriter out = new PrintWriter(this.filename);
+            out.write(website.getFile());
+            out.close();
 
         }
         catch (MalformedURLException e1) //TODO test
         {
             System.out.println("Malformed url");
             e1.printStackTrace();
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("No file found");
+            e.printStackTrace();
         }
     }
 
@@ -115,7 +100,7 @@ public class WebsiteInformation
     {
         File f = new File(this.filename);
         // if f does not exist then we do not need to delete.
-        if (f.exists() && !f.delete()) //TODO test (find way to make file unwritable?)
+        if (!f.delete())
         {
             System.out.println("File not deleted");
             return false;

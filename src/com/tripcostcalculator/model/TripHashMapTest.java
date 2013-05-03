@@ -1,6 +1,5 @@
 package com.tripcostcalculator.model;
 
-import student.TestCase;
 
 
 // -------------------------------------------------------------------------
@@ -12,7 +11,7 @@ import student.TestCase;
  *  @version Apr 30, 2013
  */
 public class TripHashMapTest
-    extends TestCase
+    extends junit.framework.TestCase
 {
     private TripHashMap map;
 

@@ -63,7 +63,7 @@ public class TollTest extends TestCase
      */
     public void testGetCosts()
     {
-        assertEquals(tollAmount, toll.getCosts(), 0.1);
+        assertEquals(tollAmount, toll.getToll(), 0.1);
     }
 
 
@@ -72,7 +72,7 @@ public class TollTest extends TestCase
      */
     public void testSetCosts()
     {
-        assertEquals(tollAmount, toll.getCosts(), 0.1);
+        assertEquals(tollAmount, toll.getToll(), 0.1);
         toll.setCosts(10);
         assertEquals(10, toll.getCosts(), 0.1);
     }
@@ -96,6 +96,16 @@ public class TollTest extends TestCase
         assertEquals(this.tollDistance, toll.getDistance(), 0.1);
         toll.setDistance(1);
         assertEquals(1, toll.getDistance(), 0.1);
+    }
+
+
+    /**
+     * Setting the gas cost and testing the gas cost for a toll road.
+     */
+    public void testGasCost()
+    {
+        toll.setGasCost(30);
+        assertEquals(30.0, toll.getGasCost(), 0.01);
     }
 
 }

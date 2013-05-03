@@ -38,6 +38,7 @@ public class TripLocation
         Scanner sc = new Scanner(startLoc).useDelimiter("\\s*,\\s*");
         Double startLat = sc.nextDouble();
         Double startLong = sc.nextDouble();
+        sc.close();
         latitude = startLat;
         longitude = startLong;
     }
@@ -152,7 +153,6 @@ public class TripLocation
      */
     public String getPublicTransportCost(Double costPerMile)
     {
-
         if (distance == null)
         {
             distance = 0.0;

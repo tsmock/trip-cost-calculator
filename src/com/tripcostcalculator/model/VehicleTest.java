@@ -40,7 +40,7 @@ public class VehicleTest extends TestCase
     public void setUp()
         throws Exception
     {
-        test = new Vehicle("Accord", "Honda", "2013");
+        test = new Vehicle("honda", "accord", "2013");
     }
 
     /**
@@ -49,5 +49,7 @@ public class VehicleTest extends TestCase
     public void testGetMpg()
     {
         assertEquals(30, test.getMPG(), .1);
+        test = new Vehicle("honda", "accord2", "2013");
+        assertEquals(0, test.getMPG(), 0.1);
     }
 }
