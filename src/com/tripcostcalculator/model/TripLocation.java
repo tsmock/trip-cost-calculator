@@ -3,7 +3,6 @@
  */
 package com.tripcostcalculator.model;
 
-import android.util.Log;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
@@ -80,7 +79,7 @@ public class TripLocation
      *
      * @return the distance as the crow files between the two points (miles)
      */
-    public double getDistance()
+    public Double getDistance()
     {
         return distance;
     }
@@ -112,13 +111,13 @@ public class TripLocation
     public String getDrivingCost(Double mpg, Double gasPrice1)
     {
 
-        if (mpg - 0.0 < 0.01 || distance == null)
+        if (mpg - 0.0 < 0.01 || this.getDistance() == null)
         {
             return "$0.00";
         }
         else
         {
-            Double drivingCost = distance * gasPrice1 / mpg;
+            Double drivingCost = this.getDistance() * gasPrice1 / mpg;
             DecimalFormat df = new DecimalFormat("#.##");
 
             return String.valueOf("$" + df.format(drivingCost));
