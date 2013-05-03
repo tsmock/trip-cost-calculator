@@ -8,7 +8,8 @@ import sofia.app.Screen;
 
 // -------------------------------------------------------------------------
 /**
- * We get car information.
+ * This class allows the user to input their vehicle and gets back the MPG for
+ * that vehicle
  *
  * @author Gareth Griffith (gareth00)
  * @author Taylor Smock (tsmock)
@@ -133,7 +134,6 @@ public class AutoScreen
      */
     private void update()
     {
-        // done[3] is the mpg. done[0-2] give enough info to get MPG
         if (done[0] && done[1] && done[2])
         {
             auto =
@@ -153,6 +153,7 @@ public class AutoScreen
             autoOk.setEnabled(false);
         }
     }
+
 }
 
 // use afterTextChanges() in textWatcher to update the edit text boxes in the
