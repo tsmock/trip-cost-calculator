@@ -1,7 +1,6 @@
 package com.tripcostcalculator.view;
 
 import android.widget.Button;
-import junit.framework.TestCase;
 
 // -------------------------------------------------------------------------
 /**
@@ -29,6 +28,9 @@ public class MainActivityTest
 
 
     // ----------------------------------------------------------
+    /**
+     * Sets up the elements on the screen
+     */
     public void setUp()
     {
         // nothing set up.

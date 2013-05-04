@@ -4,23 +4,32 @@ import junit.framework.TestCase;
 
 // -------------------------------------------------------------------------
 /**
- *  Write a one-sentence summary of your class here.
- *  Follow it with additional details about its purpose, what abstraction
- *  it represents, and how to use it.
- * 
- *  @author vorpalblade
- *  @version May 3, 2013
+ * Tests all of the methods and screen elements from the MapScreen class.
+ *
+ * @author Gareth Griffith (gareth00)
+ * @version May 3, 2013
  */
 
 public class MapScreenTest
-    extends TestCase
+    extends student.AndroidTestCase<MapScreen>
 {
+    // ----------------------------------------------------------
+    /**
+     * Create a new MapScreenTest object.
+     */
+    public MapScreenTest()
+    {
+        super(MapScreen.class);
+    }
+
 
     // ----------------------------------------------------------
+    /**
+     * Sets up the objects on the screen.
+     */
     protected void setUp()
-        throws Exception
     {
-        super.setUp();
+        // nothing to set up.
     }
 
 
@@ -34,7 +43,9 @@ public class MapScreenTest
 
 
     /**
-     * Test method for {@link com.tripcostcalculator.view.MapScreen#initialize(java.lang.String, java.lang.String, java.lang.String, java.lang.String)}.
+     * Test method for
+     * {@link com.tripcostcalculator.view.MapScreen#initialize(java.lang.String, java.lang.String, java.lang.String, java.lang.String)}
+     * .
      */
     public void testInitializeStringStringStringString()
     {
@@ -43,7 +54,8 @@ public class MapScreenTest
 
 
     /**
-     * Test method for {@link com.tripcostcalculator.view.MapScreen#parseStart()}.
+     * Test method for
+     * {@link com.tripcostcalculator.view.MapScreen#parseStart()}.
      */
     public void testParseStart()
     {
@@ -61,7 +73,8 @@ public class MapScreenTest
 
 
     /**
-     * Test method for {@link com.tripcostcalculator.view.MapScreen#setUpMapIfNeeded()}.
+     * Test method for
+     * {@link com.tripcostcalculator.view.MapScreen#setUpMapIfNeeded()}.
      */
     public void testSetUpMapIfNeeded()
     {
@@ -70,7 +83,9 @@ public class MapScreenTest
 
 
     /**
-     * Test method for {@link com.tripcostcalculator.view.MapScreen#onCreateOptionsMenu(android.view.Menu)}.
+     * Test method for
+     * {@link com.tripcostcalculator.view.MapScreen#onCreateOptionsMenu(android.view.Menu)}
+     * .
      */
     public void testOnCreateOptionsMenuMenu()
     {
