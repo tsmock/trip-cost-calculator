@@ -1,7 +1,7 @@
 package com.tripcostcalculator.view;
 
-//import android.content.Intent;
-//import android.view.View;
+// import android.content.Intent;
+// import android.view.View;
 import android.widget.Button;
 import android.location.LocationManager;
 import android.content.Context;
@@ -38,8 +38,10 @@ public class MainActivity
     private Button      defineCar;
 
 
+    // ----------------------------------------------------------
     /**
-     * Initialize data
+     * Initialize all of the screen elements and initializes variables from
+     * other screens.
      */
     public void initialize()
     {
@@ -74,7 +76,6 @@ public class MainActivity
      */
     public void defineCarClicked()
     {
-        // go to the car setup page
         presentScreen(AutoScreen.class);
     }
 
@@ -84,7 +85,6 @@ public class MainActivity
      */
     public void calcTripClicked()
     {
-        // go to the calc trip page
         Double autoMPG = 0.0;
         presentScreen(TripScreen.class, autoMPG);
     }

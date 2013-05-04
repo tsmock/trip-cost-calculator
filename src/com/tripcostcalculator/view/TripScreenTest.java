@@ -1,6 +1,5 @@
 package com.tripcostcalculator.view;
 
-import android.widget.TextView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -18,8 +17,6 @@ public class TripScreenTest
     private EditText startLoc;
     private EditText endLoc;
     private EditText gasPrice;
-    private TextView autoCost;
-    private TextView publicCost;
     private Button   tripOkButton;
 
 
@@ -30,12 +27,14 @@ public class TripScreenTest
     public TripScreenTest()
     {
         super(TripScreen.class);
-
     }
 
 
     // ----------------------------------------------------------
-    public void setUp()
+    /**
+     * Sets up the elements for each test.
+     */
+    protected void setUp()
     {
         // nothing to set up
     }
@@ -49,14 +48,8 @@ public class TripScreenTest
     {
         enterText(startLoc, "here");
         enterText(endLoc, "there");
-        enterText(gasPrice, "3.00");
+        enterText(gasPrice, "3.30");
+
         click(tripOkButton);
     }
-
-// public void testAutoCostOnMapScreen()
-// {
-// assertEquals("2", autoCost.getText());
-// assertEquals("2", publicCost.getText());
-// }
-
 }

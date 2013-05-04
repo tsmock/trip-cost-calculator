@@ -24,6 +24,8 @@ public class TripLocation
     private Double      longitudeDest;
 
 
+    // private Double mpg;
+
     // ----------------------------------------------------------
     /**
      * Create a new TripLocation object.
@@ -41,8 +43,14 @@ public class TripLocation
         sc.close();
         latitude = startLat;
         longitude = startLong;
+
     }
 
+
+// public void setMPG()
+// {
+//
+// }
 
     /**
      * Law of Cosines formula for finding distance between two coordinates
@@ -57,10 +65,9 @@ public class TripLocation
         Double lat2 = lat1 * (Math.PI / 180);
         Double lon2 = lon1 * (Math.PI / 180);
         Double dist =
-            Math.acos(Math.sin(latitude * Math.PI / 180) * Math.sin(lat2) +
-                Math.cos(latitude * Math.PI / 180)
-                * Math.cos(lat2) * Math.cos(lon2 - longitude * Math.PI / 180))
-                * 6371;
+            Math.acos(Math.sin(latitude * Math.PI / 180) * Math.sin(lat2)
+                + Math.cos(latitude * Math.PI / 180) * Math.cos(lat2)
+                * Math.cos(lon2 - longitude * Math.PI / 180)) * 6371;
         distance = dist / 1.609344; // to miles
     }
 
@@ -111,7 +118,6 @@ public class TripLocation
      */
     public String getDrivingCost(Double mpg, Double gasPrice1)
     {
-
         if (mpg - 0.0 < 0.01 || this.getDistance() == null)
         {
             return "$0.00";

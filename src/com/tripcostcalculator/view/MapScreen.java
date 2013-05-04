@@ -1,7 +1,6 @@
 package com.tripcostcalculator.view;
 
 import java.util.Scanner;
-import android.util.Log;
 import android.graphics.Color;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -30,26 +29,25 @@ import sofia.app.*;
 public class MapScreen
     extends Screen
 {
-// static LatLng START = new LatLng(37.2294, -80.4192);
-// static LatLng END = new LatLng(37.1297, -80.4192);
-    private static LatLng     START;
-    private static LatLng     END;
-    private GoogleMap map;
+    private static LatLng START;
+    private static LatLng END;
+    private GoogleMap     map;
 
-    private TextView  vehicleTransCost;
-    private TextView  publicTransCost;
+    private TextView      vehicleTransCost;
+    private TextView      publicTransCost;
 
-    private String    startParse;
-    private String    endParse;
-    private Double    startLat;
-    private Double    startLong;
-    private Double    endLat;
-    private Double    endLong;
+    private String        startParse;
+    private String        endParse;
+    private Double        startLat;
+    private Double        startLong;
+    private Double        endLat;
+    private Double        endLong;
 
 
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
+     * Initialize all of the screen elements and initializes variables from
+     * other screens.
      *
      * @param autoCost
      * @param publicCost
@@ -85,9 +83,6 @@ public class MapScreen
         Double[] d = this.parseLatitudeLongitude(startParse);
         startLat = d[0];
         startLong = d[1];
-        Log.d(
-            "START LAT LONG",
-            String.valueOf(startLat) + " " + String.valueOf(startLong));
     }
 
 
@@ -100,19 +95,20 @@ public class MapScreen
         Double[] d = this.parseLatitudeLongitude(endParse);
         endLat = d[0];
         endLong = d[1];
-        Log.d(
-            "END LAT LONG",
-            String.valueOf(endLat) + " " + String.valueOf(endLong));
     }
 
+
     /**
-     * @param latLong The string with the latitude and longitude.
-     * @return A double[] with two elements; {latitude, longitude} if
-     *          latitude and longitude came in that order.
+     * Parses the latitude and longitude from the passed string
+     *
+     * @param latLong
+     *            The string with the latitude and longitude.
+     * @return A double[] with two elements; {latitude, longitude} if latitude
+     *         and longitude came in that order.
      */
     private Double[] parseLatitudeLongitude(String latLong)
     {
-        Double[] d = {0.0, 0.0};
+        Double[] d = { 0.0, 0.0 };
         Scanner sc = new Scanner(latLong).useDelimiter("\\s*,\\s*");
         d[0] = sc.nextDouble();
         d[1] = sc.nextDouble();
@@ -121,7 +117,7 @@ public class MapScreen
 
 
     /**
-     * Runs when we resume the app.
+     * Runs when we resume the application.
      */
     protected void onResume()
     {
@@ -161,8 +157,8 @@ public class MapScreen
             map.addMarker(new MarkerOptions().position(END)
                 .title("Destination").draggable(true));
 
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(START, 15));
         // Zoom in, animating the camera.
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(START, 15));
         map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
 
         Polyline line =

@@ -29,6 +29,11 @@ public class AutoScreen
     private boolean[] done;
 
 
+    // ----------------------------------------------------------
+    /**
+     * Initialize all of the screen elements and initializes variables from
+     * other screens.
+     */
     public void initialize()
     {
         autoOk.setEnabled(false);
@@ -37,6 +42,7 @@ public class AutoScreen
         autoMake.setText("");
         autoModel.setText("");
         done = new boolean[] { false, false, false, false };
+
     }
 
 
