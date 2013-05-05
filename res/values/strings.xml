@@ -16,8 +16,8 @@
     <string name="setEnd">Set End</string>
     <string name="currentGasPrice">Current Gas Price</string>
     <string name="yourVehicle">Your Vehicle</string>
-    <string name="mainActivityPrompt">Select an option below</string>
     <string name="vehicleSetup">Vehicle Setup</string>
     <string name="calculateTrip">Calculate Trip</string>
+    <string name="choose">Choose an option</string>
 
 </resources>

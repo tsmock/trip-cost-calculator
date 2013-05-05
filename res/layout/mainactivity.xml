@@ -9,16 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp"
-        android:text="@string/mainActivityPrompt"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <Button
         android:id="@+id/calcTrip"
         android:layout_width="match_parent"
@@ -26,15 +16,14 @@
         android:layout_alignLeft="@+id/defineCar"
         android:layout_below="@+id/defineCar"
         android:layout_marginTop="16dp"
-        android:text="@string/calculateTrip" />
+        android:background="@drawable/ic_launcher" />
 
     <Button
         android:id="@+id/defineCar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="@string/vehicleSetup" />
+        android:layout_marginTop="56dp"
+        android:background="@drawable/auto_button" />
 
 </RelativeLayout>

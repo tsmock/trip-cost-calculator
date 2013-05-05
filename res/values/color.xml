@@ -4,4 +4,6 @@
 <color name="row">#ff0000</color>
 <color name="translucent_red">#ff0000</color>
 <color name="White">#ffffff</color>
+<color name="WhiteA">#22ffffff</color>
+<color name="transBlack">#ee000000</color>
 </resources>

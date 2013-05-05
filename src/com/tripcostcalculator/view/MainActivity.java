@@ -2,6 +2,11 @@ package com.tripcostcalculator.view;
 
 // import android.content.Intent;
 // import android.view.View;
+import android.R.drawable;
+import android.graphics.Color;
+import com.tripcostcalculator.R;
+import android.widget.TextView;
+import android.graphics.Typeface;
 import android.widget.Button;
 import android.location.LocationManager;
 import android.content.Context;
@@ -46,7 +51,15 @@ public class MainActivity
     public void initialize()
     {
         calcTrip.setEnabled(true);
+        calcTrip.setText("");
         defineCar.setEnabled(true);
+        defineCar.setText("");
+
+        calcTrip
+            .setBackgroundResource(com.tripcostcalculator.R.drawable.trip_button);
+        defineCar
+            .setBackgroundResource(com.tripcostcalculator.R.drawable.auto_button);
+
     }
 
 
